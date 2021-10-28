@@ -19,7 +19,7 @@ ob_start();
 </head>
 
 <body>
-    <div class="danhba">
+    <div class="wrapper">
         <div class="header">
             <div class="container">
                 <header class="row justify-content-start">
@@ -31,23 +31,23 @@ ob_start();
                             <img src="image/en.jpg" alt="">
                             <!--<a href="login.php">sign in</a>-->
                         </div>
-                        <div class="account">
-                            <a href="#">
+                        <div class="account dropdown">
+                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                 <img src="./image/no-profile-photo-small.png" alt="" class="img-circle img-fluid ">
                                 <span><?= $_SESSION['user'] ?></span>
-                                <i class="fas fa-caret-down"></i>
-
+                                <!-- <i class="fas fa-caret-down"></i> -->
                             </a>
-
-                            <!-- <img src="./image/Logo-be-Thuy_Loi.png" alt=""> -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Link 1</a></li>
+                                <li><a class="dropdown-item" href="#">Link 2</a></li>
+                                <li><a class="dropdown-item" href="#">Link 3</a></li>
+                            </ul>
                         </div>
-
                     </div>
                 </header>
             </div>
         </div>
-        </nav>
-        </header>
+
         <div class="container-fluid">
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-navbar" style="padding: 0;">
@@ -61,7 +61,7 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="register_course.php">
                                     <i class="fab fa-opencart"></i>
                                     <span data-feather="file"></span>
                                     Đăng ký học
@@ -88,13 +88,21 @@ ob_start();
                                     Thông tin cá nhân
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="information.php">
+                                <i class="fas fa-user-cog"></i>
+                                    <span data-feather="bar-chart-2"></span>
+                                    Cài đặt
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-4 mb-4">
-                    
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-content-right">
+                    <div class=" mt-4 mb-4 ">
 
 
 
-                        <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+                    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->

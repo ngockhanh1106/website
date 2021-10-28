@@ -10,6 +10,7 @@ a{
 a:hover{color: black;}
 
 .header {
+  background-color: #f2f3f8;
   border-bottom: 1px solid #b2b2b2;
   padding: 20px 0 17px 0;
   border-top: 10px solid #2b3643;
@@ -57,6 +58,10 @@ a {
 .sidebar-left{
   min-height: 650px;
 }
+
+.bg-content-right{
+  background-color: #f2f3f8;
+}
  
 /*login*/
 
@@ -87,7 +92,9 @@ a {
 .text-center{
   text-align: center;
 } 
-
+.portlet{
+  box-shadow: 0 2px 3px 2px rgb(0 0 0 / 4%);
+}
 /* homepage */
 /* .main {
   display: flex;
