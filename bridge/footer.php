@@ -1,7 +1,7 @@
 </div>
 </div>
-<div class="page-footer" style="background-color: #2b3f8d; color:#ffffff96; padding-left: 1.5%;">
-    <p>2018 © TTTH-ĐHTL Bảo lưu mọi quyền. </p>
+<div class="page-footer" style="background-color: #2b3643;   color: #b4bcc8; padding: 8px 20px 5px;font-size: 13px;height: 33px;">
+    2018 © TTTH-ĐHTL Bảo lưu mọi quyền. 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
