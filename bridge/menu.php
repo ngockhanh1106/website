@@ -1,8 +1,8 @@
-<?php
-include("config/constants.php");
-include("./process-login.php");
+<!-- ?php
+// include("config/constants.php");
+// include("./process-login.php");
 ob_start();
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +15,7 @@ ob_start();
     <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/homepage.css">
     <title>Hệ thống Quản trị Đại học Trực tuyến</title>
 </head>
 
@@ -94,8 +95,8 @@ ob_start();
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-4">
-                    
 
 
 
-                        <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+                    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
