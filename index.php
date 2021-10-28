@@ -5,24 +5,45 @@ if (!isset($_SESSION['login_check'])) {
 }
 ?>
 <?php
-include('./bridge/menu.php');
+include('./bridge/menu.php')
 ?>
-<div class="page-content" style="background-color: #f2f3f8;">
-                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                            <h1 class="h2">Dashboard</h1>
-                            <div class="btn-toolbar mb-2 mb-md-0">
-                                <div class="btn-group me-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                                </div>
-                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                                    <span data-feather="calendar"></span>
-                                    This week
-                                </button>
-                            </div>
-                        </div>
+<div class="row" style="
+        margin-right: -15px;
+        margin-left: -15px;">
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="studentmarks.php">
+                    <i class="fa fa-university"></i>
+                    <span>Tra cứu điểm</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="accounts.php">
+                    <i class="fa fa-university"></i>
+                    <span>Quản lí tài khoản</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="#">
+                    <i class="fa fa-university"></i>
+                    <span>Thông tin học sinh</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="contact.php">
+                    <i class="fa fa-university"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 <?php
 include('./bridge/footer.php')
 ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

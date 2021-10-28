@@ -1,6 +1,6 @@
 </div>
 </div>
-<div class="page-footer" style="background-color: #2b3643;   color: #b4bcc8; padding: 8px 20px 5px;font-size: 13px;height: 33px;">
+<div class="page-footer" style="background-color: #2b3643;color: #b4bcc8; padding: 8px 20px 5px;font-size: 13px;height: 33px;">
     2018 © TTTH-ĐHTL Bảo lưu mọi quyền. 
 </div>
 

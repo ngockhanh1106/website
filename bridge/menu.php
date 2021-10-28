@@ -14,7 +14,7 @@ ob_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Hệ thống Quản trị Đại học Trực tuyến</title>
 </head>
 
@@ -54,7 +54,7 @@ ob_start();
                     <div class="position-sticky pt-3 sidebar-left">
                         <ul class="nav flex-column">
                             <li class="bg-hover nav-item ">
-                                <a class="nav-link active" aria-current="page" href="#">
+                                <a class="nav-link active" aria-current="page" href="index.php">
                                     <i class="fas fa-desktop"></i>
                                     <span data-feather="home"></span>
                                     Trang chủ
@@ -82,7 +82,7 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="information.php">
                                     <i class="fas fa-user-alt"></i>
                                     <span data-feather="bar-chart-2"></span>
                                     Thông tin cá nhân
@@ -92,7 +92,7 @@ ob_start();
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-4">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-4 mb-4">
                     
 
 
