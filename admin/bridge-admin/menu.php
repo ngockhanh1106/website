@@ -1,6 +1,6 @@
 <?php
-include("config/constants.php");
-include("./process-login.php");
+include('config/constants.php');
+include("../process_login.php");
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ ob_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Hệ thống Quản trị Đại học Trực tuyến</title>
 </head>
 
@@ -23,17 +23,17 @@ ob_start();
         <div class="header">
             <div class="container">
                 <header class="row justify-content-start">
-                    <a href="index.php" class="col-6"><img src="image/logo_TL.png" class="img-fluid "></a>
+                    <a href="index.php" class="col-6"><img src="../image/logo_TL.png" class="img-fluid "></a>
                     <div class="header-right col-6 text-end header-meta">
                         <div class="logout">
                             <a href="logout.php" style="color:#2b3f8d;">Đóng phiên làm việc</a>
-                            <img src="image/vi.jpg" alt="">
-                            <img src="image/en.jpg" alt="">
+                            <img src="../image/vi.jpg" alt="">
+                            <img src="../image/en.jpg" alt="">
                             <!--<a href="login.php">sign in</a>-->
                         </div>
                         <div class="account dropdown">
                             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <img src="./image/no-profile-photo-small.png" alt="" class="img-circle img-fluid ">
+                                <img src="image/no-profile-photo-small.png" alt="" class="img-circle img-fluid ">
                                 <span><?= $_SESSION['user'] ?></span>
                                 <!-- <i class="fas fa-caret-down"></i> -->
                             </a>
@@ -63,10 +63,10 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link " href="manage_teacher.php">
                                     <i class="fab fa-opencart"></i>
                                     <span data-feather="shopping-cart"></span>
-                                    Kết quả đăng kí học
+                                    Quản ly giáo viên
                                 </a>
                             </li>
                             <li class="nav-item">

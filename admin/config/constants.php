@@ -5,7 +5,7 @@
 
  //Create Constants to Store Non Repeating Values
  //tạo biến hằng số
-    define('SITEURL', 'http://localhost/website/');
+    define('SITEURL', 'http://localhost/website/admin/');
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
