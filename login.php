@@ -26,7 +26,7 @@ include_once "config/constants.php";
                     <div class="login-img">
                         <img src="./image/60year.png" class="img-fluid" alt="">
                     </div>
-                    <form action="process-login.php" method="POST" class="login-form" >
+                    <form action="process_login.php" method="POST" class="login-form" >
                         <div class="user-box">
                             <input type="text" name="email" required="">
                             <!-- <input type="text" name="email"class="form-control" id="email" > -->
