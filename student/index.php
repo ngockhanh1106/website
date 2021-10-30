@@ -36,10 +36,10 @@ include('./bridge-student/menu.php')
             </a>
         </div>
     </div>
-    
+
 </div>
 </div>
 
-<?php 
+<?php
 include('./bridge-student/footer.php')
 ?>
