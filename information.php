@@ -48,6 +48,7 @@ include('./bridge/menu.php')
         </div>
     </div>
 </div>
+
 <?php
 include('./bridge/footer.php')
 ?>
