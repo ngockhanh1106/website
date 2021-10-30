@@ -9,16 +9,16 @@ include('./bridge-admin/menu.php')
     </div>
     <form action="#" method="POST" class="mb-4" enctype="multipart/form-data">
         <div class="row mb-3">
-            <label for="id_user" class="col-sm-2 col-form-label">id</label>
+            <label for="id_user" class="col-sm-2 col-form-label">Mã người dùng</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="id_user" name="id_user">
+                <input type="text" class="form-control" id="code_user" name="code_user">
             </div>
         </div>
 
         <div class="row mb-3">
-            <label for="name_user" class="col-sm-2 col-form-label">Họ Tên</label>
+            <label for="name_user" class="col-sm-2 col-form-label">Họ và Tên</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name_user" name="name_user">
+                <input type="text" class="form-control" id="fullname" name="fullname">
             </div>
         </div>
 
@@ -46,7 +46,7 @@ include('./bridge-admin/menu.php')
         <div class="row mb-3">
             <label for="sodidong" class="col-sm-2 col-form-label">So di dong</label>
             <div class="col-sm-10">
-                <input type="tel" class="form-control" id="sodidong" name="sodidong">
+                <input type="tel" class="form-control" id="phone" name="phone">
             </div>
         </div>
 
@@ -56,15 +56,22 @@ include('./bridge-admin/menu.php')
                 <input type="text" class="form-control" id="pass" name="pass">
             </div>
         </div>
-        
+
         <div class="row mb-3">
-            <label for="level" class="col-sm-2 col-form-label">cấp độ</label>
+            <label for="level" class="col-sm-2 col-form-label">Quyền</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="level" name="level">
+                <!-- <input type="text" class="form-control" id="role" name="role"> -->
+                <div class="form-group mt-2" style="font-size: larger;">
+                    <select name="role" id="role" class="custom-select">
+                        <option value="3" <?php echo isset($meta['role']) && $meta['role'] == 2 ? 'selected' : '' ?>>Sinh viên</option>
+                        <option value="2" <?php echo isset($meta['role']) && $meta['role'] == 2 ? 'selected' : '' ?>>Giảng viên</option>
+                        <option value="1" <?php echo isset($meta['role']) && $meta['role'] == 1 ? 'selected' : '' ?>>Quản trị viên</option>
+                    </select>
+                </div>
             </div>
         </div>
 
-       
+
 
         <button type="submit" class="btn btn-primary" name="btnAdd">Them</button>
     </form>
@@ -75,36 +82,36 @@ include('./bridge-admin/menu.php')
     //kiểm tra xem đã ấn vào nút thêm chưa
     if (isset($_POST['btnAdd'])) {
 
-        $id_user = $_POST['id_user'];
-        $fullname = $_POST['name_user'];
+        $code_user = $_POST['code_user'];
+        $fullname = $_POST['fullname'];
         $email = $_POST['email'];
         $sex = $_POST['sex'];
         $birthdate = $_POST['birthdate'];
-        $phone = $_POST['sodidong'];
+        $phone = $_POST['phone'];
         $pass = $_POST['pass'];
-        $level = $_POST['level'];
-        
+        $role = $_POST['role'];
+        $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
 
 
-        $sql = "INSERT INTO users(id_user,fullname,email,sex,birthdate,phone,pass,level)
-         VALUES( '$id_user','$fullname','$email','$sex','$birthdate','$phone','$pass','$level')";
-         echo $sql;
+
+        $sql = "INSERT INTO tb_users(code_user,fullname,email,sex,birthdate,phone,pass,role)
+         VALUES( '$code_user','$fullname','$email','$sex','$birthdate','$phone','$pass_hash','$role')";
+        //echo $sql;
 
         if (mysqli_query($conn, $sql) == TRUE) {
             $_SESSION['noti'] = "thêm thành công";
-            header("location:" . SITEURL . 'manage_teacher.php');
+            header("location:" . SITEURL . 'manage_user.php');
             // echo ' ok';
         } else {
-            // $_SESSION['noti'] = "Lỗi không thành công";
-            // header("location:" . SITEURL . 'manage_teacher.php');
-            echo 'false';
+            $_SESSION['noti'] = "Lỗi không thành công, mã người dùng đã tồn tại";
+            header("location:" . SITEURL . 'manage_user.php');
         }
         mysqli_close($conn);
     }
     ?>
 
 </div>
-<?php 
+<?php
 include('./bridge-admin/footer.php')
 ?>

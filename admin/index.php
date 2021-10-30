@@ -8,13 +8,13 @@ include('./bridge-admin/menu.php')
         <div class="dash-let">
             <a href="studentmarks.php">
                 <i class="fa fa-university"></i>
-                <span>Kết quả đăng kí học </span>
+                <span>Quản lý khóa học</span>
             </a>
         </div>
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
         <div class="dash-let">
-            <a href="accounts.php">
+            <a href="./manage_user.php">
                 <i class="fa fa-university"></i>
                 <span>Quản lí tài khoản</span>
             </a>
@@ -24,7 +24,7 @@ include('./bridge-admin/menu.php')
         <div class="dash-let">
             <a href="#">
                 <i class="fa fa-university"></i>
-                <span>Thông tin học sinh</span>
+                <span>Thông tin cá nhân</span>
             </a>
         </div>
     </div>

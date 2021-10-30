@@ -59,14 +59,14 @@ ob_start();
                                 <a class="nav-link" href="register_course.php">
                                     <i class="fab fa-opencart"></i>
                                     <span data-feather="file"></span>
-                                    Đăng ký học
+                                    Quản lý khóa học
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="manage_teacher.php">
                                     <i class="fab fa-opencart"></i>
                                     <span data-feather="shopping-cart"></span>
-                                    Quản ly giáo viên
+                                    Quản lý tài khoản
                                 </a>
                             </li>
                             <li class="nav-item">
