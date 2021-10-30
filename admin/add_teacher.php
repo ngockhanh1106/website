@@ -23,9 +23,9 @@ include('./bridge-admin/menu.php')
         </div>
 
         <div class="row mb-3">
-            <label for="username" class="col-sm-2 col-form-label">Tên đăng nhập</label>
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="username" name="username">
+                <input type="email" class="form-control" id="email" name="email">
             </div>
         </div>
 
@@ -76,8 +76,8 @@ include('./bridge-admin/menu.php')
     if (isset($_POST['btnAdd'])) {
 
         $id_user = $_POST['id_user'];
-        $name = $_POST['name_user'];
-        $username = $_POST['username'];
+        $fullname = $_POST['name_user'];
+        $email = $_POST['email'];
         $sex = $_POST['sex'];
         $birthdate = $_POST['birthdate'];
         $phone = $_POST['sodidong'];
@@ -87,8 +87,8 @@ include('./bridge-admin/menu.php')
 
 
 
-        $sql = "INSERT INTO users(id_user,name,username,sex,birthdate,phone,pass,level)
-         VALUES( '$id_user','$name','$username','$sex','$birthdate','$phone','$pass','$level')";
+        $sql = "INSERT INTO users(id_user,fullname,email,sex,birthdate,phone,pass,level)
+         VALUES( '$id_user','$fullname','$email','$sex','$birthdate','$phone','$pass','$level')";
          echo $sql;
 
         if (mysqli_query($conn, $sql) == TRUE) {

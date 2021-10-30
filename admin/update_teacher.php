@@ -36,8 +36,8 @@ include('./bridge-admin/menu.php')
                 $row = mysqli_fetch_assoc($res); //
 
                 $id_user = $row['id_user'];
-                $name = $row['name'];
-                $username = $row['username'];
+                $fullname = $row['fullname'];
+                $email = $row['email'];
                 $sex = $row['sex'];
                 $birthdate = $row['birthdate'];
                 $phone = $row['phone'];
@@ -60,14 +60,14 @@ include('./bridge-admin/menu.php')
             <div class="row mb-3">
                 <label for="name_user" class="col-sm-2 col-form-label">Họ Tên</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name_user" name="name" value="<?php echo $name; ?>">
+                    <input type="text" class="form-control" id="name_user" name="fullname" value="<?php echo $fullname; ?>">
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="username" class="col-sm-2 col-form-label">Tên đăng nhập</label>
+                <label for="username" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="username" name="username" value="<?php echo $username; ?>">
+                    <input type="email" class="form-control" id="username" name="email" value="<?php echo $email; ?>">
                 </div>
             </div>
 
@@ -120,15 +120,15 @@ if (isset($_POST['btnUpdate'])) {
     //echo "Button CLicked";
     //Get all the values from form to update
     // $id_user = $_POST['id_user'];
-    $name = $_POST['name'];
-    $username = $_POST['username'];
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
     $sex = $_POST['sex'];
     $birthdate = $_POST['birthdate'];
     $phone = $_POST['sodidong'];
     $pass = $_POST['pass'];
     $level = $_POST['level'];
 
-    $sql ="UPDATE `users` SET `id_user` = '$id_user', `name` ='$name', `username` = '$username' , `birthdate` = '$birthdate', `phone` = '$phone', `pass` = '$pass', `level` = '$level' WHERE `users`.`id_user` = '$id_user'";
+    $sql ="UPDATE `users` SET `id_user` = '$id_user', `fullname` ='$fullname', `email` = '$email' , `birthdate` = '$birthdate', `phone` = '$phone', `pass` = '$pass', `level` = '$level' WHERE `users`.`id_user` = '$id_user'";
 
 
     //Execute the Query

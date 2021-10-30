@@ -20,11 +20,11 @@ include('bridge-admin/menu.php')
                         <th scope="col">STT</th>
                         <th scope="col">id</th>
                         <th scope="col">Họ và tên</th>
-                        <th scope="col">Tên đăng nhâp</th>
-                        <th scope="col">giới tính</th>
-                        <th scope="col">ngày sinh</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Giới tính</th>
+                        <th scope="col">Ngày sinh</th>
                         <th scope="col">Số di động</th>
-                        <th scope="col">mật khẩu</th>
+                        <th scope="col">Mật khẩu</th>
                         <th scope="col">cấp độ</th>
                         <th scope="col">Sửa</th>
                         <th scope="col">Xóa</th>
@@ -51,8 +51,8 @@ include('bridge-admin/menu.php')
                                 <th scope="row"><?php echo $i; ?> </th>
 
                                 <td><?php echo $row['id_user']; ?> </td>
-                                <td><?php echo $row['name']; ?> </td>
-                                <td><?php echo $row['username']; ?> </td>
+                                <td><?php echo $row['fullname']; ?> </td>
+                                <td><?php echo $row['email']; ?> </td>
                                 <td><?php echo $row['sex']; ?> </td>
                                 <td><?php echo $row['birthdate']; ?> </td>
                                 <td><?php echo $row['phone']; ?> </td>
