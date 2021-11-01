@@ -6,7 +6,11 @@ include('./bridge-student/menu.php')
         margin-left: -15px;">
     <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
         <div class="dash-let">
+<<<<<<< HEAD
             <a href="contact.php">
+=======
+            <a href="./register.php">
+>>>>>>> dcb9f5a919b987b22bf9a96508d12e6f2a1356f7
                 <i class="fa fa-university"></i>
                 <span>Đăng kí học</span>
             </a>

@@ -1,7 +1,7 @@
 <?php
-include("config/constants.php");
-include("./process_login.php");
-ob_start();
+// include("config/constants.php");
+// include("./process_login.php");
+// ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
