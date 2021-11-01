@@ -4,9 +4,9 @@
 
 <?php
 
-    $id_user = $_GET['id_user'];
+    $id_course = $_GET['id_course'];
 
-    $sql = "DELETE FROM tb_users WHERE id_user=$id_user";
+    $sql = "DELETE FROM tb_course WHERE id_course=$id_course";
 
     //echo $sql;
 
@@ -14,11 +14,11 @@
     if($res == TRUE)
     {
         $_SESSION['noti'] = "Xóa thành công";
-        header("location:".$SITEURL.'manage_user.php');
+        header("location:".$SITEURL.'manage_course.php');
     }
     else{
         $_SESSION['noti'] = "Lỗi khi xóa";
-        header("location:".$SITEURL.'manage_user.php');
+        header("location:".$SITEURL.'manage_course.php');
 
     }
 

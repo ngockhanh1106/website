@@ -2,7 +2,7 @@
 include('bridge-admin/menu.php')
 ?>
 
-<div class="mt-4 p-4 bg-white rounded shadow-sm">
+
     <div class="row">
         <div class="col-12">
             <?php
@@ -26,7 +26,6 @@ include('bridge-admin/menu.php')
                             <th scope="col">Giới tính</th>
                             <th scope="col">Ngày sinh</th>
                             <th scope="col">Số di động</th>
-                            <th scope="col">Mật khẩu</th>
                             <th scope="col">Quyền</th>
                             <th scope="col">Sửa</th>
                             <th scope="col">Xóa</th>
@@ -60,11 +59,10 @@ include('bridge-admin/menu.php')
                                     <td><?php echo $row['sex']; ?> </td>
                                     <td><?php echo $row['birthdate']; ?> </td>
                                     <td><?php echo $row['phone']; ?> </td>
-                                    <td><?php echo $row['pass']; ?> </td>
                                     <td><?php echo $row['role']; ?> </td>
 
-                                    <td><a href="update_user.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit"></i></a></td>
-                                    <td><a href="delete_user.php?id=<?php echo $row['id']; ?>"><i class="fas fa-trash"></i></a></td>
+                                    <td><a href="update_user.php?id_user=<?php echo $row['id_user']; ?>"><i class="fas fa-edit"></i></a></td>
+                                    <td><a href="delete_user.php?id_user=<?php echo $row['id_user']; ?>"><i class="fas fa-trash"></i></a></td>
                                 </tr>
                         <?php
                                 $i++;
@@ -77,7 +75,7 @@ include('bridge-admin/menu.php')
         </div>
     </div>
 
-</div>
+
 
 <?php
 include('./bridge-admin/footer.php')

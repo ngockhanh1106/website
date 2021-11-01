@@ -12,10 +12,10 @@ include('./bridge-admin/menu.php')
         <?php
         //1. Get the ID of Selected Admin
          
-        $id = $_GET['id'];
+        $id_user= $_GET['id_user'];
         
         //2. Create SQL Query to Get the Details
-        $sql = "SELECT*FROM tb_users where id= $id";
+        $sql = "SELECT*FROM tb_users where id_user= $id_user";
         //echo $sql;
 
         //Execute the Query
@@ -38,9 +38,7 @@ include('./bridge-admin/menu.php')
                 $sex = $row['sex'];
                 $birthdate = $row['birthdate'];
                 $phone = $row['phone'];
-                $pass = $row['pass'];
                 $role = $row['role'];
-                $old_role = $role;
 
             } else {
                 //Redirect to Manage Admin PAge
@@ -92,18 +90,11 @@ include('./bridge-admin/menu.php')
             </div>
 
             <div class="row mb-3">
-                <label for="pass" class="col-sm-2 col-form-label">Mật khẩu</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="pass" name="pass" value="<?php echo $pass; ?>">
-                </div>
-            </div>
-
-            <div class="row mb-3">
                 <label for="role" class="col-sm-2 col-form-label">Quyền</label>
                 <div class="col-sm-10">
                 <div class="form-group mt-2" style="font-size: larger;">
                     <select name="role" id="role" class="custom-select" value="<?php echo $role; ?>">
-                        <option value="3" <?php echo isset($meta['role']) && $meta['role'] == 2 ? 'selected' : '' ?>>Sinh viên</option>
+                        <option value="3" <?php echo isset($meta['role']) && $meta['role'] == 3 ? 'selected' : '' ?>>Sinh viên</option>
                         <option value="2" <?php echo isset($meta['role']) && $meta['role'] == 2 ? 'selected' : '' ?>>Giảng viên</option>
                         <option value="1" <?php echo isset($meta['role']) && $meta['role'] == 1 ? 'selected' : '' ?>>Quản trị viên</option>
                     </select>
@@ -112,7 +103,7 @@ include('./bridge-admin/menu.php')
                     <!-- <input type="text" class="form-control" id="role" name="role" value="?php echo $role; ?>"> -->
                 </div>
             </div>
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
             <input type="submit" class="btn btn-primary" name="btnUpdate" value="Sửa">
         </form>
     </div>
@@ -126,7 +117,7 @@ include('./bridge-admin/menu.php')
 if (isset($_POST['btnUpdate'])) {
     //echo "Button CLicked";
     //Get all the values from form to update
-    $id = $_POST['id'];
+    $id_user = $_POST['id_user'];
     $code_user = $_POST['code_user'];
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
@@ -136,7 +127,7 @@ if (isset($_POST['btnUpdate'])) {
     $pass = $_POST['pass'];
     $role = $_POST['role'];
 
-    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone', `pass` = '$pass', `role` = '$role' WHERE `tb_users`.`id` = '$id'";
+    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone', `pass` = '$pass', `role` = '$role' WHERE `tb_users`.`id_user` = '$id_user'";
 
 
     //Execute the Query

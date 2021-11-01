@@ -88,7 +88,7 @@ include('./bridge-admin/menu.php')
         $birthdate = $_POST['birthdate'];
         $phone = $_POST['phone'];
         $pass = $_POST['pass'];
-        $role = $_POST['role'];
+        $role = 2;
         $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
 

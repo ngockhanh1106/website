@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['login_check'])) {
-    header("location:login.php");
-}
+//if (!isset($_SESSION['login_check'])) {
+// header("location:login.php");
+//}
 ?>
 <?php
 include('./bridge/menu.php')
@@ -47,3 +47,4 @@ include('./bridge/menu.php')
 <?php
 include('./bridge/footer.php')
 ?>
+

@@ -13,7 +13,7 @@ include_once "config/constants.php";
     <title>Đăng nhập - Cổng sinh viên Đại học Thủy Lợi</title>
     <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
@@ -24,12 +24,12 @@ include_once "config/constants.php";
 
                 <div class="login-box">
                     <div class="login-img">
-                        <img src="./image/60year.png" class="img-fluid" alt="">
+                        <img src="../image/60year.png" class="img-fluid" alt="">
                     </div>
-                    <form action="process_login.php" method="POST" class="login-form" >
+                    <form action="" method="POST" class="login-form" >
                         <div class="user-box">
                             <input type="text" name="code_user" required="">
-                            <!-- <input type="text" name="email"class="form-control" id="email" > -->
+                            <!-- <input type="text" name="code_user"class="form-control" id="code_user" > -->
                             <label>Tên đăng nhập</label>
                         </div>
                         <div class="user-box">
@@ -61,6 +61,59 @@ include_once "config/constants.php";
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </html>
+
+<?php
+
+// if (isset($_POST["submit"])) {
+//     $code_user = $_POST['code_user'];
+//     $pass = ($_POST['pass']);
+//     require('config/constants.php');
+
+//     $sql = "SELECT * FROM tb_users WHERE '$code_user' = code_user AND '$pass' = pass";
+
+//     $res = mysqli_query($conn, $sql);
+//     if ($res) {
+//         $row = mysqli_fetch_assoc($res);
+//         //đăng nhập thành công 
+//         $_SESSION['fullname'] = $row["fullname"];
+//         $_SESSION['user'] = $row['code_user'];
+//         // echo"<script> alert('ok')</script>";
+//         header('location:index.php');
+//     } else {
+//         // header("location: login.php");
+//         echo"<script> alert('ten dnag nhap hoac mat khau khong dung')</script>";
+//     }
+// }
+ 
+
+?>
+
+<?php
+
+if (isset($_POST['submit'])) {
+    $code_user = $_POST['code_user'];
+    $pass = $_POST['pass'];
+    // require('config/constants.php');
+    $sql = "SELECT * FROM tb_users WHERE code_user = '$code_user' and role = 1";
+    echo $sql;
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        $pass_hash = $row['pass'];
+        if (password_verify($pass, $pass_hash)) {
+            //biến quản lý làm việc
+            $_SESSION['login_check'] = $code_user;
+            $_SESSION['user']=$row["fullname"];
+
+            header("Location:index.php");
+            //echo "meejt moir";
+        } else {
+            echo "Xác nhận mật khẩu không đúng";
+        }
+    } else {
+        echo "tài khoản không tồn tại";
+    }
+}
 
 
 

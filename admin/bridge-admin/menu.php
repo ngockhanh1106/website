@@ -1,6 +1,6 @@
 <?php
 include('config/constants.php');
-include("../process_login.php");
+// include("check-login.php");
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -34,8 +34,7 @@ ob_start();
                         <div class="account dropdown">
                             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                 <img src="../image/no-profile-photo-small.png" alt="" class="img-circle img-fluid ">
-                                <!-- <span>?= $_SESSION['user'] ?></span> -->
-                                <!-- <i class="fas fa-caret-down"></i> -->
+                                <!-- <span>?= $_SESSION['fullname'] ?>m</span> -->
                             </a>
                         </div>
                     </div>
@@ -56,7 +55,7 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="register_course.php">
+                                <a class="nav-link" href="manage_course.php">
                                     <i class="fab fa-opencart"></i>
                                     <span data-feather="file"></span>
                                     Quản lý khóa học
@@ -70,7 +69,7 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="users.php">
                                     <i class="fas fa-search"></i>
                                     <span data-feather="users"></span>
                                     Tìm kiếm thông tin khóa học
@@ -85,7 +84,7 @@ ob_start();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="information.php">
-                                <i class="fas fa-user-cog"></i>
+                                    <i class="fas fa-user-cog"></i>
                                     <span data-feather="bar-chart-2"></span>
                                     Cài đặt
                                 </a>
@@ -96,8 +95,9 @@ ob_start();
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-content-right">
                     <div class=" mt-4 mb-4 ">
+                        <div class="mt-4 p-4 bg-white rounded shadow-sm">
 
 
 
 
-                    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+                            <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
