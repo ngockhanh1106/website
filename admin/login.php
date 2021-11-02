@@ -62,31 +62,6 @@ include_once "config/constants.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </html>
 
-<?php
-
-// if (isset($_POST["submit"])) {
-//     $code_user = $_POST['code_user'];
-//     $pass = ($_POST['pass']);
-//     require('config/constants.php');
-
-//     $sql = "SELECT * FROM tb_users WHERE '$code_user' = code_user AND '$pass' = pass";
-
-//     $res = mysqli_query($conn, $sql);
-//     if ($res) {
-//         $row = mysqli_fetch_assoc($res);
-//         //đăng nhập thành công 
-//         $_SESSION['fullname'] = $row["fullname"];
-//         $_SESSION['user'] = $row['code_user'];
-//         // echo"<script> alert('ok')</script>";
-//         header('location:index.php');
-//     } else {
-//         // header("location: login.php");
-//         echo"<script> alert('ten dnag nhap hoac mat khau khong dung')</script>";
-//     }
-// }
- 
-
-?>
 
 <?php
 
