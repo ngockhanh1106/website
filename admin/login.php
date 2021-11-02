@@ -99,8 +99,7 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
     if ($result) {
         $row = mysqli_fetch_assoc($result);
-        $pass_hash = $row['pass'];
-        if (password_verify($pass, $pass_hash)) {
+        if (md5($pass) == $row['pass']) {
             //biến quản lý làm việc
             $_SESSION['login_check'] = $code_user;
             $_SESSION['user']=$row["fullname"];

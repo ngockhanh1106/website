@@ -156,9 +156,9 @@ include('./bridge-admin/menu.php')
                     <label for="status" class="col-sm-2 col-form-label">Trạng thái</label>
                     <div class="col-sm-10">
                         <div class="form-group mt-2" style="font-size: larger;">
-                            <select name="status" id="status" class="custom-select" value="<?php echo $status; ?>">
-                                <option value="0" <?php echo isset($meta['status']) && $meta['status'] == 0 ? 'selected' : '' ?>>Đóng</option>
-                                <option value="1" <?php echo isset($meta['status']) && $meta['status'] == 1 ? 'selected' : '' ?>>Mở</option>
+                            <select name="status" id="status" class="custom-select">
+                                <option value="0" <?php echo $status == 0 ? 'selected' : '' ?>>Đóng</option>
+                                <option value="1" <?php echo $status == 1 ? 'selected' : '' ?>>Mở</option>
                             </select>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 <?php
 include('config/constants.php');
-// include("check-login.php");
+include("check-login.php");
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ ob_start();
                         <div class="account dropdown">
                             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                 <img src="../image/no-profile-photo-small.png" alt="" class="img-circle img-fluid ">
-                                <!-- <span>?= $_SESSION['fullname'] ?>m</span> -->
+                                <span><?= $_SESSION['user'] ?></span>
                             </a>
                         </div>
                     </div>
