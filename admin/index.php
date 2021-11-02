@@ -24,6 +24,14 @@ include('./bridge-admin/menu.php')
         <div class="dash-let">
             <a href="#">
                 <i class="fa fa-university"></i>
+                <span>Phân công giảng dạy</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+        <div class="dash-let">
+            <a href="#">
+                <i class="fa fa-university"></i>
                 <span>Thông tin cá nhân</span>
             </a>
         </div>

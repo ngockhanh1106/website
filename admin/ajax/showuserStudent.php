@@ -4,7 +4,6 @@
             <tr>
                 <th>STT</th>
                 <th>Mã Giáo viên</th>
-                <!-- <th>Mật khẩu</th> -->
                 <th>Tên Giáo viên</th>
                 <th>Email</th>
                 <th>Giới tính</th>
@@ -18,7 +17,7 @@
 
             <?php
             include('../config/constants.php');
-            $sql = "SELECT * FROM `tb_users` WHERE role = 2";
+            $sql = "SELECT * FROM `tb_users` WHERE role = 3";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
@@ -35,7 +34,7 @@
                         <td><?= $row['birthdate'] ?></td>
                         <td><?= $row['phone'] ?></td>
                         <td>
-                            <a href="update_teacher.php?id_user=<?php echo $row['id_user']; ?>"><i class="fas fa-edit"></i></a>
+                            <a href="update_student.php?id_user=<?php echo $row['id_user']; ?>"><i class="fas fa-edit"></i></a>
                         </td>
 
                         <td><a href="delete_user.php?id_user=<?php echo $row['id_user']; ?>"><i class="fas fa-trash"></i></a></td>

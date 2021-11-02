@@ -34,12 +34,15 @@ include('./bridge-admin/menu.php')
                     $code_course = $row['code_course'];
                     $name_course = $row['name_course'];
                     $lesson = $row['lesson'];
-                    $room = $row['room'];
-                    $semester = $row['semester'];
+                    $id_room = $row['id_room'];
+                    $id_semester = $row['id_semester'];
                     $startdate = $row['startdate'];
                     $enddate = $row['enddate'];
                     $credit = $row['credit'];
                     $status = $row['status'];
+                    $old_room = $id_room;
+                    $old_semester = $id_semester;
+
                 } else {
                     //Redirect to Manage Admin PAge
                     header('location:' . SITEURL . 'index.php');
@@ -71,16 +74,62 @@ include('./bridge-admin/menu.php')
                 <div class="row mb-3">
                     <label for="" class="col-sm-2 col-form-label">Phòng học</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="room" name="room" value="<?php echo $room; ?>">
+                        <select class="form-select" name="room">
+                        <?php
+                        $sql = "SELECT * FROM tbl_room";
+                        $res = mysqli_query($conn, $sql);
+                        $count = mysqli_num_rows($res);
+
+                        if ($count > 0) {
+                            while ($row = mysqli_fetch_assoc($res)) {
+                                $id_room = $row['id_room'];
+                                $name_room = $row['name_room'];
+                        ?>
+                                <option class="form-control" value="<?= $id_room; ?>" <?php if ($id_room == $old_room) {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                    <?= $name_room ?></option>
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <option value="0">No Found</option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                     </div>
                 </div>
 
 
                 <div class="row mb-3">
-                    <label for="semester" class="col-sm-2 col-form-label">Kỳ học</label>
+                    <label for="" class="col-sm-2 col-form-label">Kỳ học</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="semester" name="semester" value="<?php echo $semester; ?>">
-                    </div>
+                    <select class="form-select" name="semester">
+                        <?php
+                        $sql = "SELECT * FROM tbl_semester";
+                        $res = mysqli_query($conn, $sql);
+                        $count = mysqli_num_rows($res);
+
+                        if ($count > 0) {
+                            while ($row = mysqli_fetch_assoc($res)) {
+                                $id_semester = $row['id_semester'];
+                                $name_semester = $row['name_semester'];
+                        ?>
+                                <option class="form-control" value="<?= $id_semester; ?>" 
+                                <?php if ($id_semester == $old_semester) {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                    <?= $name_semester ?></option>
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <option value="0">No Found</option>
+                        <?php
+                        }
+                        ?>
+                    </select>                    </div>
                 </div>
 
                 <div class="row mb-3">
@@ -106,7 +155,6 @@ include('./bridge-admin/menu.php')
                 <div class="row mb-3">
                     <label for="status" class="col-sm-2 col-form-label">Trạng thái</label>
                     <div class="col-sm-10">
-                        <!-- <input type="text" class="form-control" id="role" name="role"> -->
                         <div class="form-group mt-2" style="font-size: larger;">
                             <select name="status" id="status" class="custom-select" value="<?php echo $status; ?>">
                                 <option value="0" <?php echo isset($meta['status']) && $meta['status'] == 0 ? 'selected' : '' ?>>Đóng</option>
@@ -132,15 +180,15 @@ if (isset($_POST['btnUpdate'])) {
     $code_course = $_POST['code_course'];
     $name_course = $_POST['name_course'];
     $lesson = $_POST['lesson'];
-    $room = $_POST['room'];
-    $semester = $_POST['semester'];
+    $id_room = $_POST['room'];
+    $id_semester = $_POST['semester'];
     $startdate = $_POST['startdate'];
     $enddate = $_POST['enddate'];
     $credit = $_POST['credit'];
     $status = $_POST['status'];
 
  
-   $sql = "UPDATE `tb_course` SET `code_course` = '$code_course', `name_course` ='$name_course', `room` = '$room' ,`semester` = '$semester', `startdate` = '$startdate', `enddate` = '$enddate', `lesson` = '$lesson', `status` = '$status' WHERE `id_course` = '$id_course'";
+   $sql = "UPDATE `tb_course` SET `code_course` = '$code_course', `name_course` ='$name_course', `id_room` = '$id_room' ,`id_semester` = '$id_semester', `startdate` = '$startdate', `enddate` = '$enddate', `lesson` = '$lesson', `status` = '$status' WHERE `id_course` = '$id_course'";
    echo $sql;
 
     //Execute the Query
@@ -157,6 +205,8 @@ if (isset($_POST['btnUpdate'])) {
         // header("location:" . SITEURL . 'manage_course.php');
         echo "loi";
     }
+    mysqli_close($conn);
+
 }
 
 ?>

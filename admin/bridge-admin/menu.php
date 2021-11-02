@@ -62,17 +62,17 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="manage_teacher.php">
+                                <a class="nav-link " href="users.php">
                                     <i class="fab fa-opencart"></i>
                                     <span data-feather="shopping-cart"></span>
                                     Quản lý tài khoản
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="users.php">
-                                    <i class="fas fa-search"></i>
+                                <a class="nav-link" href="manage_assignment.php">
+                                <i class="far fa-hand-paper"></i>
                                     <span data-feather="users"></span>
-                                    Tìm kiếm thông tin khóa học
+                                    Phân công giảng dạy
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -83,7 +83,7 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="information.php">
+                                <a class="nav-link" href="users.php">
                                     <i class="fas fa-user-cog"></i>
                                     <span data-feather="bar-chart-2"></span>
                                     Cài đặt

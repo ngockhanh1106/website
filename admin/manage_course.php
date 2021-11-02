@@ -25,6 +25,7 @@ include('bridge-admin/menu.php')
                             <th scope="col">STT</th>
                             <th scope="col">Mã khóa học</th>
                             <th scope="col">Tên khóa học</th>
+                            <th scope="col">Ngày</th>
                             <th scope="col">Tiết học</th>
                             <th scope="col">Phòng học</th>
                             <th scope="col">Kỳ học</th>
@@ -42,9 +43,11 @@ include('bridge-admin/menu.php')
                         //bước 1:kết nối tời csdl(mysql)
 
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
-                        $sql = "SELECT*FROM tb_course";
+                        $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status FROM tb_course,tbl_room,tbl_semester where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester";
+                        // $sql = "SELECT image_name,nv.manv, nv.tennv, nv.chucvu, nv.email, nv.sodidong, dv.tendv FROM db_nhanvien nv, db_donvi dv WHERE nv.madv = dv.madv order by nv.manv";
 
-                        //echo $sql;
+
+                        // echo $sql;
                         $result = mysqli_query($conn, $sql);
 
                         //bước 3 xử lý kết quả trả về
@@ -60,9 +63,10 @@ include('bridge-admin/menu.php')
 
                                     <td><?php echo $row['code_course']; ?> </td>
                                     <td><?php echo $row['name_course']; ?> </td>
+                                    <td><?php echo $row['days']; ?> </td>
                                     <td><?php echo $row['lesson']; ?> </td>
-                                    <td><?php echo $row['room']; ?> </td>
-                                    <td><?php echo $row['semester']; ?> </td>
+                                    <td><?php echo $row['name_room']; ?> </td>
+                                    <td><?php echo $row['name_semester']; ?> </td>
                                     <td><?php echo $row['startdate']; ?> </td>
                                     <td><?php echo $row['enddate']; ?> </td>
                                     <td><?php echo $row['credit']; ?> </td>

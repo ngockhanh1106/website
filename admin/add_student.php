@@ -4,12 +4,12 @@ include('./bridge-admin/menu.php')
 
 <div class="container">
     <div class="wrapper">
-        <h1>Thêm danh bạ</h1>
+        <h1>Thêm Sinh viên</h1>
         <br /><br />
     </div>
     <form action="#" method="POST" class="mb-4" enctype="multipart/form-data">
         <div class="row mb-3">
-            <label for="id_user" class="col-sm-2 col-form-label">Mã người dùng</label>
+            <label for="" class="col-sm-2 col-form-label">Mã sinh viên</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="code_user" name="code_user">
             </div>
@@ -73,7 +73,7 @@ include('./bridge-admin/menu.php')
         $birthdate = $_POST['birthdate'];
         $phone = $_POST['phone'];
         $pass = $_POST['pass'];
-        $role = 2;
+        $role = 3;
         $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
 
