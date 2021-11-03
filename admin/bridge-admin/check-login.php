@@ -1,4 +1,4 @@
 <?php
-if(!isset($_SESSION['login_check'])){
+if(!isset($_SESSION['login-check'])){
     header('location:login.php');
 }

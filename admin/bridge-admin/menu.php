@@ -76,14 +76,14 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="information.php">
+                                <a class="nav-link" href="infor.php">
                                     <i class="fas fa-user-alt"></i>
                                     <span data-feather="bar-chart-2"></span>
                                     Thông tin cá nhân
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="users.php">
+                                <a class="nav-link" href="#">
                                     <i class="fas fa-user-cog"></i>
                                     <span data-feather="bar-chart-2"></span>
                                     Cài đặt
