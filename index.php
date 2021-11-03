@@ -18,12 +18,7 @@ include('./bridge/menu.php')
                 </a>
             </div>
         </div>
-    <?php
-    }
-    ?>
-    <?php
-    if ($_SESSION['role'] == 3) {
-    ?>
+    
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
                 <a href="register_course.php">
@@ -32,12 +27,16 @@ include('./bridge/menu.php')
                 </a>
             </div>
         </div>
-    <?php
-    }
-    ?>
-    <?php
-    if ($_SESSION['role'] == 3) {
-    ?>
+    
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="list_course.php">
+                    <i class="fa fa-university"></i>
+                    <span>Kết quả đăng ký học</span>
+                </a>
+            </div>
+        </div>
+    
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
                 <a href="course.php">

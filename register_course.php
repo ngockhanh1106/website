@@ -81,6 +81,9 @@ include('./bridge/menu.php')
     </div>
 </div>
 <?php
+include('./bridge/footer.php')
+?>
+<?php
 include('./bridge/footer.php');
 if (isset($_POST['submit'])) {
     $id_course= $_POST['id_course'];
