@@ -58,7 +58,7 @@ ob_start();
                             if ($_SESSION['role'] == 2) {
                             ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="register_course.php">
+                                    <a class="nav-link" href="teacher_schedule.php">
                                         <i class="fab fa-opencart"></i>
                                         <span data-feather="file"></span>
                                         Lịch giảng dạy
