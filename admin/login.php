@@ -29,7 +29,6 @@ include_once "config/constants.php";
                     <form action="" method="POST" class="login-form" >
                         <div class="user-box">
                             <input type="text" name="code_user" required="">
-                            <!-- <input type="text" name="code_user"class="form-control" id="code_user" > -->
                             <label>Tên đăng nhập</label>
                         </div>
                         <div class="user-box">

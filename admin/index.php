@@ -22,7 +22,7 @@ include('./bridge-admin/menu.php')
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
         <div class="dash-let">
-            <a href="#">
+            <a href="manage_assignment.php">
                 <i class="fa fa-university"></i>
                 <span>Phân công giảng dạy</span>
             </a>
