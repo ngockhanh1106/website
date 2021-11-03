@@ -14,9 +14,17 @@ include('./bridge-admin/menu.php')
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
         <div class="dash-let">
-            <a href="./manage_user.php">
+            <a href="users.php">
                 <i class="fa fa-university"></i>
                 <span>Quản lí tài khoản</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+        <div class="dash-let">
+            <a href="./manage_list_student.php">
+                <i class="fa fa-university"></i>
+                <span> Quản lý danh sách sinh viên đăng ký</span>
             </a>
         </div>
     </div>

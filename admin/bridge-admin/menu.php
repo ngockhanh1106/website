@@ -69,6 +69,13 @@ ob_start();
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link " href="manage_list_student.php">
+                                    <i class="fab fa-opencart"></i>
+                                    <span data-feather="shopping-cart"></span>
+                                    Quản lý danh sách sinh viên đăng ký
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="manage_assignment.php">
                                 <i class="far fa-hand-paper"></i>
                                     <span data-feather="users"></span>
