@@ -18,7 +18,7 @@ include('./bridge/menu.php')
                 </a>
             </div>
         </div>
-    
+
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
                 <a href="register_course.php">
@@ -27,7 +27,7 @@ include('./bridge/menu.php')
                 </a>
             </div>
         </div>
-    
+
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
                 <a href="list_course.php">
@@ -36,7 +36,7 @@ include('./bridge/menu.php')
                 </a>
             </div>
         </div>
-    
+
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
                 <a href="course.php">
@@ -48,16 +48,39 @@ include('./bridge/menu.php')
     <?php
     }
     ?>
-    <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
-        <div class="dash-let">
-            <a href="contact.php">
-                <i class="fa fa-university"></i>
-                <span>Liên hệ</span>
-            </a>
+    <?php
+    if ($_SESSION['role'] == 2) {
+    ?>
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="contact.php">
+                    <i class="fa fa-university"></i>
+                    <span>Lịch giảng dạy</span>
+                </a>
+            </div>
         </div>
-    </div>
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="studentmarks.php">
+                    <i class="fa fa-university"></i>
+                    <span>Danh sách sinh viên đăng kí </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+            <div class="dash-let">
+                <a href="contact.php">
+                    <i class="fa fa-university"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </div>
+        </div>
 
 </div>
+<?php
+    }
+?>
 
 <?php
 include('./bridge/footer.php')
