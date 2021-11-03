@@ -3,164 +3,100 @@ include('./bridge/menu.php')
 ?>
 
 <div class="row">
-    <div class="px-4 col-md-3" style="background-color: indianred;">meo</div>
-    <div class="px-4 col-md-3" style="background-color:indigo;">meo</div>
-    <div class="px-4 col-md-6" style="background-color: indianred;">ngay</div>
-</div>
-<div class="row mt-5">
     <div class="col-12">
-        <div class="mt-4 p-4 bg-white rounded shadow-sm">
-            <div class="mb-2 pb-2 border-bottom ">
-                <div class="caption">
-                    <i class="fa fa-th"></i>
-                    Đăng ký học
-                </div>
-            </div>
-            <div class="pt-2 row">
-                <div class="col-3">
-                    <h4>Môn học</h4>
-                    <div class="scroll_body">
-                        <table class="table table-bordered dataTable">
-                            <tbody>
+        <?php
+        if (isset($_SESSION['noti'])) //Checking whether the SEssion is Set of Not
+        {
+            echo $_SESSION['noti']; //Display the SEssion Message if SEt
+            unset($_SESSION['noti']); //Remove Session Message
+        }
+        ?>
+        <br />
+
+        <h3>Quản Lý Khóa Học</h3>
+
+        <div class="table-responsive table-responsive-md">
+            <form method="POST">
+                <table class="table table-striped table-hover table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Mã khóa học</th>
+                            <th scope="col">Tên khóa học</th>
+                            <th scope="col">Ngày</th>
+                            <th scope="col">Tiết học</th>
+                            <th scope="col">Phòng học</th>
+                            <th scope="col">Kỳ học</th>
+                            <th scope="col">Ngày bắt đầu</th>
+                            <th scope="col">Ngày kết thúc</th>
+                            <th scope="col">Tín chỉ</th>
+                            <th scope="col">
+                                Đăng ký
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        //lấy dữ liệu từ CSDL và để ra bảng (phần lặp lại)
+                        //bước 1:kết nối tời csdl(mysql)
+
+                        //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
+                        $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status FROM tb_course,tbl_room,tbl_semester where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester and tb_course.status=1";
+                        $result = mysqli_query($conn, $sql);
+
+                        //bước 3 xử lý kết quả trả về
+                        if (mysqli_num_rows($result) > 0) {
+                            $i = 1;
+                            while ($row = mysqli_fetch_assoc($result)) {
+
+                        ?>
+
                                 <tr>
+                                    <th scope="row"><?php echo $i; ?> </th>
+                                    
+                                    <td><?php echo $row['code_course']; ?> </td>
+                                    <td><?php echo $row['name_course']; ?> </td>
+                                    <td><?php echo $row['days']; ?> </td>
+                                    <td><?php echo $row['lesson']; ?> </td>
+                                    <td><?php echo $row['name_room']; ?> </td>
+                                    <td><?php echo $row['name_semester']; ?> </td>
+                                    <td><?php echo $row['startdate']; ?> </td>
+                                    <td><?php echo $row['enddate']; ?> </td>
+                                    <td><?php echo $row['credit']; ?> </td>
                                     <td>
-                                        <a href="">llllll</a>
+                                        <button type="submit" name="submit"><i class="fas fa-book-medical"></i></button>
+                                        <input type="hidden" name="id_course" value="<?php echo $row['id_course']; ?>">
                                     </td>
+                                    
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <a href="">llllll</a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <a href="">llllll</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="">llllll</a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <a href="">llllll</a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <a href="">llllll</a>
-                                    </td>
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                <div class="col-9">
-                    <h4>Lớp học phần</h4>
-                    <div class="scroll_body">
-                        <table class="table table-bordered dataTable ">
-                            <tbody>
-
-                                <tr class="bg-secondary disabled color-palette">
-                                    <td colspan="5">
-
-                                        Lớp chính: <strong>An toàn và bảo mật thông tin (61HT)</strong>
-                                        <span>; Khóa: <strong>K61<span>
-                                                    <span ng-if="e.status!= null"></span>
-
-                                                </span></strong>; Trạng thái lớp học phần:
-
-                                            <span class="text-white"><strong>Bình thường</strong></span>
-
-                                        </span>
-
-                                        <div class="md-checkbox margin-left-10" style="display: inline-block !important;">
-                                            <input type="checkbox" id="" class="md-check" ng-checked="e.isSelected" ng-click="vm.toggleCourseSubjectEnrollment($event, e)" ng-disabled="(!vm.allowRegister &amp;&amp; !(vm.isAllowUnRegister==true &amp;&amp; e.isSelected==true) )||  (e.isOvelapTime!=null &amp;&amp; e.isOvelapTime) || (vm.currentCourseSubject.isForcedRegType!=null &amp;&amp; vm.currentCourseSubject.isForcedRegType==true) || vm.currentCourseSubject.isCancel==true || vm.currentCourseSubject.hasParaSubject==true || vm.currentCourseSubject.isAllowSubjectUnRegister==false" disabled="disabled" checked="checked">
-                                            <label for="">
-                                                <span></span> <span class="check"></span> <span class="box"></span>
-                                            </label>
-                                        </div>
-
-                                        <span class="pull-right text-white">
-                                            77/80
-                                        </span>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th></th>
-                                    <th>Tuần</th>
-                                    <th>Thời gian</th>
-                                    <th>Phòng</th>
-                                    <th>Giáo viên</th>
-                                </tr>
-
-
-                                <tr>
-                                    <th></th>
-                                    <td style="width: 30%">
-                                        <span>
-                                            1<i class="fas fa-arrow-right"></i>8
-
-                                            <span class="">
-                                                (<b>06/09/2021</b>
-                                                <i class="fas fa-arrow-right"></i>
-                                                <b>31/10/2021</b>)
-                                            </span>
-
-                                        </span>
-                                    </td>
-
-                                    <td ng-if="t.weekIndex>0 &amp;&amp; t.weekIndex<8">Thứ <strong>4</strong> : Tiết 4
-                                        <i class="fas fa-arrow-right"></i>Tiết 6
-                                    </td>
-
-
-                                    <td>347-A3</td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                    <th></th>
-                                    <td style="width: 30%">
-                                        <span>
-                                            11<i class="fas fa-arrow-right"></i>18
-
-                                            <span class="">
-                                                (<b>15/11/2021</b>
-                                                <i class="fas fa-arrow-right"></i>
-                                                <b>09/01/2022</b>)
-                                            </span>
-
-                                        </span>
-                                    </td>
-
-                                    <td ng-if="t.weekIndex>0 &amp;&amp; t.weekIndex<8">Thứ <strong>2</strong> : Tiết 4
-                                        <i class="fas fa-arrow-right"></i>Tiết 6
-                                    </td>
-
-
-                                    <td>243-A3</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-            <h1>Jumbotron Example</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..</p>
+                        <?php
+                                $i++;
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </div>
+</div>
+<?php
+include('./bridge/footer.php');
+if (isset($_POST['submit'])) {
+    $id_course= $_POST['id_course'];
+    $id_user= $_SESSION['id_user'];
 
-    <?php
-    include('./bridge/footer.php')
-    ?>
+    $sql = "INSERT INTO tbl_register(id_course,id_user)
+    VALUES( '$id_course','$id_user')";
+        
+
+        if (mysqli_query($conn, $sql) == TRUE) {
+            $_SESSION['noti'] = "thêm thành công";
+            // header("location:" . SITEURL . '');
+        } else {
+            $_SESSION['noti'] = "Lỗi khi thêm";
+            // header("location:" . SITEURL . '');
+        }
+        mysqli_close($conn);
+}
+?>

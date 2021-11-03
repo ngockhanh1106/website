@@ -26,7 +26,7 @@ include_once "config/constants.php";
                     <div class="login-img">
                         <img src="./image/60year.png" class="img-fluid" alt="">
                     </div>
-                    <form action="process_login.php" method="POST" class="login-form" >
+                    <form method="POST" class="login-form">
                         <div class="user-box">
                             <input type="text" name="code_user" required="">
                             <!-- <input type="text" name="email"class="form-control" id="email" > -->
@@ -60,7 +60,30 @@ include_once "config/constants.php";
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
 </html>
 
-
-
+<?php
+if (isset($_POST["submit"])) {
+    $code_user = $_POST['code_user'];
+    $pass = $_POST['pass'];
+    $sql = "SELECT * FROM tb_users WHERE '$code_user' = code_user";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        if (md5($pass) == $row['pass']) {
+            //biến quản lý làm việc
+            $_SESSION['login_check'] = $code_user;
+            $_SESSION['role']=$row['role'];
+            $_SESSION['user']=$row["fullname"];
+            $_SESSION['id_user']=$row['id_user'];
+            header("Location:index.php");
+            //echo "meejt moir";
+        } else {
+            echo "Xác nhận mật khẩu không đúng";
+        }
+    } else {
+        echo "tài khoản không tồn tại";
+    }
+}
+?>
