@@ -89,8 +89,8 @@ if (isset($_POST['submit'])) {
     $id_course= $_POST['id_course'];
     $id_user= $_SESSION['id_user'];
 
-    $sql = "INSERT INTO tbl_register(id_course,id_user)
-    VALUES( '$id_course','$id_user')";
+    $sql = "INSERT INTO tbl_register(id_course,id_user,status)
+    VALUES( '$id_course','$id_user',1)";
         
 
         if (mysqli_query($conn, $sql) == TRUE) {

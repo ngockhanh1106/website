@@ -30,6 +30,9 @@ include('./bridge/menu.php')
                             <th scope="col">Ngày bắt đầu</th>
                             <th scope="col">Ngày kết thúc</th>
                             <th scope="col">Tín chỉ</th>
+                            <th scope="col">
+                                Hủy môn học
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +41,8 @@ include('./bridge/menu.php')
                         //bước 1:kết nối tời csdl(mysql)
 
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
-                        $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status FROM tb_course,tbl_room,tbl_semester where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester and tb_course.status=1";
+                        $sql = "SELECT tb_course.id_course,code_course,name_course,days,lesson,startdate,enddate,credit,name_room,name_semester  FROM tb_course,tbl_register,tb_users,tbl_room,tbl_semester where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester AND tb_course.id_course = tbl_register.id_course AND tb_users.id_user = tbl_register.id_user and tbl_register.status=1";
+
                         $result = mysqli_query($conn, $sql);
 
                         //bước 3 xử lý kết quả trả về
@@ -60,6 +64,10 @@ include('./bridge/menu.php')
                                     <td><?php echo $row['startdate']; ?> </td>
                                     <td><?php echo $row['enddate']; ?> </td>
                                     <td><?php echo $row['credit']; ?> </td>
+                                    <td>
+                                        <button type="submit" name="submit"><i class="fas fa-window-close"></i></button>
+                                        <input type="hidden" name="id_course" value="<?php echo $row['id_course']; ?>">
+                                    </td>
                                 </tr>
                         <?php
                                 $i++;
@@ -73,5 +81,20 @@ include('./bridge/menu.php')
     </div>
 </div>
 <?php
-include('./bridge/footer.php')
+include('./bridge/footer.php');
+if(isset($_POST['submit'])){
+    $id_course= $_POST['id_course'];
+    $id_user= $_SESSION['id_user'];
+
+    $sql = "UPDATE tbl_register SET status=0 where id_course='$id_course' and id_user='$id_user' ";
+
+        if (mysqli_query($conn, $sql) == TRUE) {
+            $_SESSION['noti'] = "thêm thành công";
+            header("location:list_course.php");
+        } else {
+            $_SESSION['noti'] = "Lỗi khi thêm";
+            header("location:list_course.php");
+        }
+        mysqli_close($conn);
+}
 ?>
