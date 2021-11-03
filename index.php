@@ -53,7 +53,7 @@ include('./bridge/menu.php')
     ?>
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
-                <a href="contact.php">
+                <a href="teacher_schedule.php">
                     <i class="fa fa-university"></i>
                     <span>Lịch giảng dạy</span>
                 </a>
