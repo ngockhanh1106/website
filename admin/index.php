@@ -38,7 +38,15 @@ include('./bridge-admin/menu.php')
     </div>
     <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
         <div class="dash-let">
-            <a href="#">
+            <a href="manage_semester.php">
+                <i class="fa fa-university"></i>
+                <span>Cập nhật kì học</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
+        <div class="dash-let">
+            <a href="profile.php">
                 <i class="fa fa-university"></i>
                 <span>Thông tin cá nhân</span>
             </a>

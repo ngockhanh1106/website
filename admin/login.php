@@ -76,7 +76,9 @@ if (isset($_POST['submit'])) {
         if (md5($pass) == $row['pass']) {
             //biến quản lý làm việc
             $_SESSION['login-check'] = $code_user;
-            $_SESSION['user']=$row["fullname"];
+            $_SESSION['users']=$row["fullname"];
+            $_SESSION['id_users'] = $row['id_user'];
+
 
             header("Location:index.php");
             //echo "meejt moir";
