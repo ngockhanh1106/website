@@ -72,12 +72,8 @@ include('./bridge-admin/menu.php')
         $sex = $_POST['sex'];
         $birthdate = $_POST['birthdate'];
         $phone = $_POST['phone'];
-        $pass = $_POST['pass'];
+        $pass = md5($_POST['pass']);
         $role = 2;
-        $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
-
-
-
 
         $sql = "INSERT INTO tb_users(code_user,fullname,email,sex,birthdate,phone,pass,role)
          VALUES( '$code_user','$fullname','$email','$sex','$birthdate','$phone','$pass_hash','$role')";
