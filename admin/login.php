@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
         $row = mysqli_fetch_assoc($result);
         if (md5($pass) == $row['pass']) {
             //biến quản lý làm việc
-            $_SESSION['login_check'] = $code_user;
+            $_SESSION['login-check'] = $code_user;
             $_SESSION['user']=$row["fullname"];
 
             header("Location:index.php");
