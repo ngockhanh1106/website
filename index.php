@@ -61,7 +61,7 @@ include('./bridge/menu.php')
         </div>
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
-                <a href="studentmarks.php">
+                <a href="list_student.php">
                     <i class="fa fa-university"></i>
                     <span>Danh sách sinh viên đăng kí </span>
                 </a>

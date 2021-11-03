@@ -65,7 +65,7 @@ ob_start();
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " href="#">
+                                    <a class="nav-link " href="list_student.php">
                                         <i class="fab fa-opencart"></i>
                                         <span data-feather="shopping-cart"></span>
                                         Danh sách sinh viên đăng kí
