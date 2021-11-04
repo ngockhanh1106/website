@@ -76,7 +76,7 @@ include('./bridge-admin/menu.php')
         $role = 2;
 
         $sql = "INSERT INTO tb_users(code_user,fullname,email,sex,birthdate,phone,pass,role)
-         VALUES( '$code_user','$fullname','$email','$sex','$birthdate','$phone','$pass_hash','$role')";
+         VALUES( '$code_user','$fullname','$email','$sex','$birthdate','$phone','$pass','$role')";
         //echo $sql;
 
         if (mysqli_query($conn, $sql) == TRUE) {
