@@ -4,20 +4,20 @@ include('./bridge/menu.php')
 
 <div class="row">
     <div class="col-12">
-        
-       
+
+
 
         <h3>Quản Lý Khóa Học</h3>
-        
-        <span style="font-size: 20px; position: relative; top: 10px">
-            <form action="find_course.php" method="get">
-                Tìm kiếm:
-                <input type="text" name="search" id="">
-                <input type="submit" name="submit" id="" value="Tìm kiếm">
-            </form>
-        </span>
 
-        
+        <div class="my-3">
+            <form action="" method="POST" style="display:flex;">
+                <input class="form-control" type="search" name="search" placeholder="Tìm kiếm tên khóa học" required>
+                <button class="btn btn-info text-light" type="submit" style="margin-left:20px;">Tìm</button>
+            </form>
+
+        </div>
+
+
         <div class="table-responsive table-responsive-md" style="margin-top: 10px;">
             <form method="POST">
                 <table class="table table-striped table-hover table-bordered mt-3">
@@ -49,6 +49,17 @@ include('./bridge/menu.php')
                         where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester 
                         AND tb_course.id_course = tbl_register.id_course AND tb_users.id_user = tbl_register.id_user and tbl_register.status=1";
 
+                        if (isset($_POST['search'])) {
+                            // print_r($_POST);
+                            $s = $_POST['search'];
+                            $sql = "SELECT tb_course.id_course,code_course,name_course,days,lesson,startdate,enddate,credit,name_room,name_semester  
+                            FROM tb_course,tbl_register,tb_users,tbl_room,tbl_semester 
+                            where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester 
+                            AND tb_course.id_course = tbl_register.id_course AND tb_users.id_user = tbl_register.id_user and tbl_register.status=1
+                            and name_course like '%$s%'";
+    
+                            echo " <h4 class='text-success text-center'>Kết quả tìm kiếm của bạn trả về '$s'</h4>";
+                        }
                         $result = mysqli_query($conn, $sql);
 
                         //bước 3 xử lý kết quả trả về
@@ -71,8 +82,9 @@ include('./bridge/menu.php')
                                     <td><?php echo $row['enddate']; ?> </td>
                                     <td><?php echo $row['credit']; ?> </td>
                                     <td>
-                                        <button type="submit" name="submit"><i class="fas fa-window-close"></i></button>
-                                        <input type="hidden" name="id_course" value="<?php echo $row['id_course']; ?>">
+            
+                                        <a href="cancel_course.php?id_course=<?php echo $row['id_course'];?>"  >  <i class="fas fa-times text-danger" ></i></a>
+                                        
                                     </td>
                                 </tr>
                         <?php
@@ -88,19 +100,4 @@ include('./bridge/menu.php')
 </div>
 <?php
 include('./bridge/footer.php');
-if (isset($_POST['submit'])) {
-    $id_course = $_POST['id_course'];
-    $id_user = $_SESSION['id_user'];
-
-    $sql = "UPDATE tbl_register SET status=0 where id_course='$id_course' and id_user='$id_user' ";
-
-    if (mysqli_query($conn, $sql) == TRUE) {
-        $_SESSION['noti'] = "Xóa thành công";
-        header("location:list_course.php");
-    } else {
-        $_SESSION['noti'] = "Lỗi khi xóa";
-        header("location:list_course.php");
-    }
-    mysqli_close($conn);
-}
 ?>
