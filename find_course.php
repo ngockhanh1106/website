@@ -1,23 +1,22 @@
 <?php
-include('./bridge/menu.php')
+include('./bridge/menu.php');
+$search = mysqli_real_escape_string($conn, $_POST['search']);
 ?>
 
 <div class="row">
     <div class="col-12">
-        
-       
-
         <h3>Quản Lý Khóa Học</h3>
-        
+
         <span style="font-size: 20px; position: relative; top: 10px">
-            <form action="find_course.php" method="get">
+            <form action="find_course.php" method="post">
                 Tìm kiếm:
                 <input type="text" name="search" id="">
-                <input type="submit" name="submit" id="" value="Tìm kiếm">
+                <input type="submit" name="tim" id="" value="Tìm kiếm">
             </form>
         </span>
 
-        
+
+
         <div class="table-responsive table-responsive-md" style="margin-top: 10px;">
             <form method="POST">
                 <table class="table table-striped table-hover table-bordered mt-3">
@@ -38,26 +37,20 @@ include('./bridge/menu.php')
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php
-                        //lấy dữ liệu từ CSDL và để ra bảng (phần lặp lại)
-                        //bước 1:kết nối tời csdl(mysql)
+                    <?php
+                    $search = $_GET['search'];
+                    
+            echo $sql = "SELECT tb_course.id_course,code_course,name_course,days,lesson,startdate,enddate,credit,name_room,name_semester  
+            FROM tb_course,tbl_register,tb_users,tbl_room,tbl_semester 
+            where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester 
+            AND tb_course.id_course = tbl_register.id_course AND tb_users.id_user = tbl_register.id_user and tbl_register.status=1 AND name_course like '%$search%' ";
+                 
+                        // $kq = mysqli_query($conn, $sql);
 
-                        //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
-                        $sql = "SELECT tb_course.id_course,code_course,name_course,days,lesson,startdate,enddate,credit,name_room,name_semester  
-                        FROM tb_course,tbl_register,tb_users,tbl_room,tbl_semester 
-                        where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester 
-                        AND tb_course.id_course = tbl_register.id_course AND tb_users.id_user = tbl_register.id_user and tbl_register.status=1";
-
-                        $result = mysqli_query($conn, $sql);
-
-                        //bước 3 xử lý kết quả trả về
-                        if (mysqli_num_rows($result) > 0) {
+                        if (mysqli_num_rows($kq) > 0) {
                             $i = 1;
-                            while ($row = mysqli_fetch_assoc($result)) {
-
-                        ?>
-
+                            while ($row = mysqli_fetch_array($kq)) {
+                    ?>
                                 <tr>
                                     <th scope="row"><?php echo $i; ?> </th>
 
@@ -75,12 +68,17 @@ include('./bridge/menu.php')
                                         <input type="hidden" name="id_course" value="<?php echo $row['id_course']; ?>">
                                     </td>
                                 </tr>
-                        <?php
+                    <?php
                                 $i++;
                             }
+                        } else {
+                            echo 'Không tìm thấy khóa học';
                         }
-                        ?>
-                    </tbody>
+                    
+                    ?>
+                    }
+                    ?>
+
                 </table>
             </form>
         </div>

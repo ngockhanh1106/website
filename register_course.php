@@ -41,9 +41,8 @@ include('./bridge/menu.php')
                         //bước 1:kết nối tời csdl(mysql)
 
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
-                        $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status FROM tb_course,tbl_room,tbl_semester where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester and tb_course.status=1";
+                        $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status FROM tb_course,tbl_room,tbl_semester where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester and tb_course.status=1 ";
                         $result = mysqli_query($conn, $sql);
-
                         //bước 3 xử lý kết quả trả về
                         if (mysqli_num_rows($result) > 0) {
                             $i = 1;
@@ -53,7 +52,7 @@ include('./bridge/menu.php')
 
                                 <tr>
                                     <th scope="row"><?php echo $i; ?> </th>
-                                    
+
                                     <td><?php echo $row['code_course']; ?> </td>
                                     <td><?php echo $row['name_course']; ?> </td>
                                     <td><?php echo $row['days']; ?> </td>
@@ -64,10 +63,29 @@ include('./bridge/menu.php')
                                     <td><?php echo $row['enddate']; ?> </td>
                                     <td><?php echo $row['credit']; ?> </td>
                                     <td>
-                                        <button type="submit" name="submit"><i class="fas fa-book-medical"></i></button>
-                                        <input type="hidden" name="id_course" value="<?php echo $row['id_course']; ?>">
+                                        <?php
+                                            $idc = $row['id_course'];
+                                            $idu = $_SESSION['id_user'];
+                                            $sql2 = "select * from tbl_register where id_course = $idc and id_user = $idu and status=1";
+                                            $res=mysqli_query($conn, $sql2);
+                                            if(mysqli_num_rows($res)>0){
+                                                ?>
+                                                <a href="#"  >  <i class="fas fa-check-circle"></i></a>
+
+                                                <?php 
+
+                                                
+                                            }else{
+                                                ?>
+                                                <a href="process_register.php?id_course=<?php echo $row['id_course'];?>&id_user=<?php echo $_SESSION['id_user'];?>"  >  <i class="fas fa-book-medical"></i></a>
+
+                                                <?php
+                                            }
+
+
+                                        ?>
                                     </td>
-                                    
+
                                 </tr>
                         <?php
                                 $i++;
@@ -80,26 +98,7 @@ include('./bridge/menu.php')
         </div>
     </div>
 </div>
-<?php
-include('./bridge/footer.php')
-?>
+
 <?php
 include('./bridge/footer.php');
-if (isset($_POST['submit'])) {
-    $id_course= $_POST['id_course'];
-    $id_user= $_SESSION['id_user'];
-
-    $sql = "INSERT INTO tbl_register(id_course,id_user,status)
-    VALUES( '$id_course','$id_user',1)";
-        
-
-        if (mysqli_query($conn, $sql) == TRUE) {
-            $_SESSION['noti'] = "thêm thành công";
-            // header("location:" . SITEURL . '');
-        } else {
-            $_SESSION['noti'] = "Lỗi khi thêm";
-            // header("location:" . SITEURL . '');
-        }
-        mysqli_close($conn);
-}
 ?>
