@@ -91,13 +91,7 @@ ob_start();
                                         Kết quả đăng kí học
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <i class="fas fa-search"></i>
-                                        <span data-feather="users"></span>
-                                        Tìm kiếm thông tin khóa học
-                                    </a>
-                                </li>
+                               
                             <?php
                             }
                             ?>

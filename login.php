@@ -78,9 +78,8 @@ if (isset($_POST["submit"])) {
             $_SESSION['user']=$row["fullname"];
             $_SESSION['id_user']=$row['id_user'];
             header("Location:index.php");
-            //echo "meejt moir";
         } else {
-            echo"<script> alert('Xác nhận mật khẩu không đúng')</script>";
+            echo "Xác nhận mật khẩu không đúng";
         }
     } else {
         echo "tài khoản không tồn tại";

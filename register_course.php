@@ -66,7 +66,7 @@ include('./bridge/menu.php')
                                         <?php
                                             $idc = $row['id_course'];
                                             $idu = $_SESSION['id_user'];
-                                            $sql2 = "select * from tbl_register where id_course = $idc and id_user = $idu and status=1";
+                                            $sql2 = "select * from tbl_register where id_course = $idc and id_user = $idu";
                                             $res=mysqli_query($conn, $sql2);
                                             if(mysqli_num_rows($res)>0){
                                                 ?>
