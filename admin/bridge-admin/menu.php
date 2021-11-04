@@ -34,7 +34,7 @@ ob_start();
                         <div class="account dropdown">
                             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                 <img src="../image/no-profile-photo-small.png" alt="" class="img-circle img-fluid ">
-                                <span><?= $_SESSION['user'] ?></span>
+                                <span><?= $_SESSION['users'] ?></span>
                             </a>
                         </div>
                     </div>
@@ -50,49 +50,56 @@ ob_start();
                             <li class="bg-hover nav-item ">
                                 <a class="nav-link active" aria-current="page" href="index.php">
                                     <i class="fas fa-desktop"></i>
-                                    <span data-feather="home"></span>
+                                    <span ></span>
                                     Trang chủ
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="manage_course.php">
                                     <i class="fab fa-opencart"></i>
-                                    <span data-feather="file"></span>
+                                    <span ></span>
                                     Quản lý khóa học
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="users.php">
                                     <i class="fab fa-opencart"></i>
-                                    <span data-feather="shopping-cart"></span>
+                                    <span></span>
                                     Quản lý tài khoản
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="manage_list_student.php">
                                     <i class="fab fa-opencart"></i>
-                                    <span data-feather="shopping-cart"></span>
+                                    <span></span>
                                     Quản lý danh sách sinh viên đăng ký
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="manage_assignment.php">
                                 <i class="far fa-hand-paper"></i>
-                                    <span data-feather="users"></span>
+                                    <span ></span>
                                     Phân công giảng dạy
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="infor.php">
+                                <a class="nav-link" href="manage_semester.php">
+                                <i class="far fa-hand-paper"></i>
+                                    <span ></span>
+                                    Cập nhật kỳ học
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.php">
                                     <i class="fas fa-user-alt"></i>
-                                    <span data-feather="bar-chart-2"></span>
+                                    <span ></span>
                                     Thông tin cá nhân
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fas fa-user-cog"></i>
-                                    <span data-feather="bar-chart-2"></span>
+                                    <span ></span>
                                     Cài đặt
                                 </a>
                             </li>

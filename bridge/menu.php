@@ -54,27 +54,53 @@ ob_start();
                                     Trang chủ
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="register_course.php">
-                                    <i class="fab fa-opencart"></i>
-                                    <span data-feather="file"></span>
-                                    Đăng ký học
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="list_course.php">
-                                    <i class="fab fa-opencart"></i>
-                                    <span data-feather="shopping-cart"></span>
-                                    Kết quả đăng ký học
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span data-feather="users"></span>
-                                    Tìm kiếm thông tin khóa học
-                                </a>
-                            </li>
+                            <?php
+                            if ($_SESSION['role'] == 2) {
+                            ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="teacher_schedule.php">
+                                        <i class="fab fa-opencart"></i>
+                                        <span data-feather="file"></span>
+                                        Lịch giảng dạy
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="list_student.php">
+                                        <i class="fab fa-opencart"></i>
+                                        <span data-feather="shopping-cart"></span>
+                                        Danh sách sinh viên đăng kí
+                                    </a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+                            <?php
+                            if ($_SESSION['role'] == 3) {
+                            ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="register_course.php">
+                                        <i class="fab fa-opencart"></i>
+                                        <span data-feather="file"></span>
+                                        Đăng ký học
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#">
+                                        <i class="fab fa-opencart"></i>
+                                        <span data-feather="shopping-cart"></span>
+                                        Kết quả đăng kí học
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-search"></i>
+                                        <span data-feather="users"></span>
+                                        Tìm kiếm thông tin khóa học
+                                    </a>
+                                </li>
+                            <?php
+                            }
+                            ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="information.php">
                                     <i class="fas fa-user-alt"></i>
@@ -84,7 +110,7 @@ ob_start();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                <i class="fas fa-user-cog"></i>
+                                    <i class="fas fa-user-cog"></i>
                                     <span data-feather="bar-chart-2"></span>
                                     Cài đặt
                                 </a>
@@ -99,4 +125,4 @@ ob_start();
 
 
 
-                    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+                        <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->

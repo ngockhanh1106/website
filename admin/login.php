@@ -69,22 +69,21 @@ if (isset($_POST['submit'])) {
     $pass = $_POST['pass'];
     // require('config/constants.php');
     $sql = "SELECT * FROM tb_users WHERE code_user = '$code_user' and role = 1";
-    echo $sql;
     $result = mysqli_query($conn, $sql);
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         if (md5($pass) == $row['pass']) {
             //biến quản lý làm việc
             $_SESSION['login-check'] = $code_user;
-            $_SESSION['user']=$row["fullname"];
+            $_SESSION['users']=$row["fullname"];
+            $_SESSION['id_users'] = $row['id_user'];
 
             header("Location:index.php");
-            //echo "meejt moir";
         } else {
-            echo "Xác nhận mật khẩu không đúng";
+            echo"<script> alert('Xác nhận mật khẩu không đúng')</script>";
         }
     } else {
-        echo "tài khoản không tồn tại";
+        echo"<script> alert('Tài khoản không đúng')</script>";
     }
 }
 

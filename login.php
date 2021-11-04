@@ -80,7 +80,7 @@ if (isset($_POST["submit"])) {
             header("Location:index.php");
             //echo "meejt moir";
         } else {
-            echo "Xác nhận mật khẩu không đúng";
+            echo"<script> alert('Xác nhận mật khẩu không đúng')</script>";
         }
     } else {
         echo "tài khoản không tồn tại";
