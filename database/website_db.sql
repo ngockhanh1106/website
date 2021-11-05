@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2021 lúc 02:19 PM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 8.0.10
+-- Host: 127.0.0.1
+-- Generation Time: Nov 05, 2021 at 04:40 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `website_db`
+-- Database: `website_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_assign`
+-- Table structure for table `tbl_assign`
 --
 
 CREATE TABLE `tbl_assign` (
@@ -34,40 +34,44 @@ CREATE TABLE `tbl_assign` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_assign`
+-- Dumping data for table `tbl_assign`
 --
 
 INSERT INTO `tbl_assign` (`id_assign`, `id_course`, `id_user`) VALUES
 (2, 10, 27),
-(4, 11, 27),
+(4, 11, 39),
 (5, 13, 37),
 (6, 9, 38);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_register`
+-- Table structure for table `tbl_register`
 --
 
 CREATE TABLE `tbl_register` (
   `id_register` int(11) NOT NULL,
   `id_course` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `status` int(10) NOT NULL
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_register`
+-- Dumping data for table `tbl_register`
 --
 
-INSERT INTO `tbl_register` (`id_register`, `id_course`, `id_user`, `status`) VALUES
-(24, 13, 36, 1),
-(25, 13, 41, 1);
+INSERT INTO `tbl_register` (`id_register`, `id_course`, `id_user`) VALUES
+(29, 9, 36),
+(31, 13, 36),
+(32, 9, 40),
+(33, 12, 40),
+(34, 13, 40),
+(35, 9, 41),
+(36, 13, 41);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_room`
+-- Table structure for table `tbl_room`
 --
 
 CREATE TABLE `tbl_room` (
@@ -76,7 +80,7 @@ CREATE TABLE `tbl_room` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_room`
+-- Dumping data for table `tbl_room`
 --
 
 INSERT INTO `tbl_room` (`id_room`, `name_room`) VALUES
@@ -91,7 +95,7 @@ INSERT INTO `tbl_room` (`id_room`, `name_room`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_semester`
+-- Table structure for table `tbl_semester`
 --
 
 CREATE TABLE `tbl_semester` (
@@ -100,7 +104,7 @@ CREATE TABLE `tbl_semester` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_semester`
+-- Dumping data for table `tbl_semester`
 --
 
 INSERT INTO `tbl_semester` (`id_semester`, `name_semester`) VALUES
@@ -116,7 +120,7 @@ INSERT INTO `tbl_semester` (`id_semester`, `name_semester`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_course`
+-- Table structure for table `tb_course`
 --
 
 CREATE TABLE `tb_course` (
@@ -135,7 +139,7 @@ CREATE TABLE `tb_course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_course`
+-- Dumping data for table `tb_course`
 --
 
 INSERT INTO `tb_course` (`id_course`, `code_course`, `name_course`, `days`, `lesson`, `id_room`, `id_semester`, `startdate`, `enddate`, `credit`, `status`, `amount`) VALUES
@@ -148,7 +152,7 @@ INSERT INTO `tb_course` (`id_course`, `code_course`, `name_course`, `days`, `les
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_users`
+-- Table structure for table `tb_users`
 --
 
 CREATE TABLE `tb_users` (
@@ -164,12 +168,11 @@ CREATE TABLE `tb_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_users`
+-- Dumping data for table `tb_users`
 --
 
 INSERT INTO `tb_users` (`id_user`, `code_user`, `role`, `fullname`, `email`, `sex`, `birthdate`, `phone`, `pass`) VALUES
 (27, '19610307', 2, 'Nguyễn Giang', '19610307@gmail.com', 'nữ', '2021-10-15', 976543256, '202cb962ac59075b964b07152d234b70'),
-(31, 'admin1', 1, 'admin', 'beo@gmail.com', 'lgbt', '2001-03-10', 987854269, '202cb962ac59075b964b07152d234b70'),
 (36, '19610311', 3, 'Hoàng Hà Giang', 'giang@gmail.com', 'nam', '2001-07-08', 976543876, '202cb962ac59075b964b07152d234b70'),
 (37, '18610302', 2, 'Nguyễn Ngọc Bảo', 'bao@gmail.com', 'nam', '1986-07-09', 97443256, '202cb962ac59075b964b07152d234b70'),
 (38, 'teacher12', 2, 'Ngọc Lục Bảo', 'bao@gmail.com', 'nữ', '1989-11-03', 988843876, '202cb962ac59075b964b07152d234b70'),
@@ -178,12 +181,36 @@ INSERT INTO `tb_users` (`id_user`, `code_user`, `role`, `fullname`, `email`, `se
 (41, '19930604', 3, 'Nguyễn Việt Hùng', 'hung11@vaka.com', 'nam', '1998-11-13', 987843876, '202cb962ac59075b964b07152d234b70'),
 (43, 'teacher567', 2, 'Đinh Khánh Hà', 'ha@gmail.com', 'nam', '1985-02-11', 989893876, '202cb962ac59075b964b07152d234b70');
 
+-- --------------------------------------------------------
+
 --
--- Chỉ mục cho các bảng đã đổ
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `userid` int(11) NOT NULL,
+  `first_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `registration_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` int(11) NOT NULL DEFAULT 0,
+  `code` char(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userid`, `first_name`, `last_name`, `email`, `password`, `registration_date`, `status`, `code`) VALUES
+(2, 'Ngoc', 'Khánh', 'meoc419@gmail.com', '202cb962ac59075b964b07152d234b70', '2021-11-05 07:43:04', 1, 'e7eceaa18f128423c1cadf3202f434e2');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `tbl_assign`
+-- Indexes for table `tbl_assign`
 --
 ALTER TABLE `tbl_assign`
   ADD PRIMARY KEY (`id_assign`),
@@ -191,7 +218,7 @@ ALTER TABLE `tbl_assign`
   ADD KEY `tbl_assign_ibfk_2` (`id_user`);
 
 --
--- Chỉ mục cho bảng `tbl_register`
+-- Indexes for table `tbl_register`
 --
 ALTER TABLE `tbl_register`
   ADD PRIMARY KEY (`id_register`),
@@ -199,20 +226,20 @@ ALTER TABLE `tbl_register`
   ADD KEY `tbl_register_ibfk_2` (`id_user`);
 
 --
--- Chỉ mục cho bảng `tbl_room`
+-- Indexes for table `tbl_room`
 --
 ALTER TABLE `tbl_room`
   ADD PRIMARY KEY (`id_room`),
   ADD UNIQUE KEY `name_room` (`name_room`);
 
 --
--- Chỉ mục cho bảng `tbl_semester`
+-- Indexes for table `tbl_semester`
 --
 ALTER TABLE `tbl_semester`
   ADD PRIMARY KEY (`id_semester`);
 
 --
--- Chỉ mục cho bảng `tb_course`
+-- Indexes for table `tb_course`
 --
 ALTER TABLE `tb_course`
   ADD PRIMARY KEY (`id_course`),
@@ -221,72 +248,84 @@ ALTER TABLE `tb_course`
   ADD KEY `tb_course_ibfk_2` (`id_semester`);
 
 --
--- Chỉ mục cho bảng `tb_users`
+-- Indexes for table `tb_users`
 --
 ALTER TABLE `tb_users`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `code_user` (`code_user`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `tbl_assign`
+-- AUTO_INCREMENT for table `tbl_assign`
 --
 ALTER TABLE `tbl_assign`
   MODIFY `id_assign` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_register`
+-- AUTO_INCREMENT for table `tbl_register`
 --
 ALTER TABLE `tbl_register`
-  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_room`
+-- AUTO_INCREMENT for table `tbl_room`
 --
 ALTER TABLE `tbl_room`
   MODIFY `id_room` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_semester`
+-- AUTO_INCREMENT for table `tbl_semester`
 --
 ALTER TABLE `tbl_semester`
   MODIFY `id_semester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `tb_course`
+-- AUTO_INCREMENT for table `tb_course`
 --
 ALTER TABLE `tb_course`
   MODIFY `id_course` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT cho bảng `tb_users`
+-- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `tbl_assign`
+-- Constraints for table `tbl_assign`
 --
 ALTER TABLE `tbl_assign`
   ADD CONSTRAINT `tbl_assign_ibfk_1` FOREIGN KEY (`id_course`) REFERENCES `tb_course` (`id_course`),
   ADD CONSTRAINT `tbl_assign_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id_user`);
 
 --
--- Các ràng buộc cho bảng `tbl_register`
+-- Constraints for table `tbl_register`
 --
 ALTER TABLE `tbl_register`
   ADD CONSTRAINT `tbl_register_ibfk_1` FOREIGN KEY (`id_course`) REFERENCES `tb_course` (`id_course`),
   ADD CONSTRAINT `tbl_register_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id_user`);
 
 --
--- Các ràng buộc cho bảng `tb_course`
+-- Constraints for table `tb_course`
 --
 ALTER TABLE `tb_course`
   ADD CONSTRAINT `tb_course_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `tbl_room` (`id_room`),

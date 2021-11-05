@@ -13,7 +13,7 @@ include('./bridge/menu.php')
         ?>
         <br />
 
-        <h3>Quản Lý Khóa Học</h3>
+        <h3>Đăng Ký Khóa Học</h3>
 
         <div class="table-responsive table-responsive-md">
             <form method="POST">

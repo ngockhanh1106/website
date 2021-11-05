@@ -4,6 +4,7 @@
             <tr>
                 <th>STT</th>
                 <th>Mã Giáo viên</th>
+                <th>Mật khẩu</th>
                 <th>Tên Giáo viên</th>
                 <th>Email</th>
                 <th>Giới tính</th>
@@ -27,7 +28,7 @@
                     <tr>
                         <td><?= $i ?></td>
                         <td><?= $row['code_user'] ?></td>
-                        <!-- <td>?= $row['pass'] ?></td> -->
+                        <td><?= $row['pass'] ?></td>
                         <td><?= $row['fullname'] ?></td>
                         <td><?= $row['email'] ?></td>
                         <td><?= $row['sex'] ?></td>

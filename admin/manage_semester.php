@@ -25,8 +25,8 @@ include('bridge-admin/menu.php')
                             <th scope="col">STT</th>
                             <th scope="col">Mã kỳ học</th>
                             <th scope="col">Tên kỳ học</th>
-                            <th scope="col">Sửa</th>
-                            <th scope="col">Xóa</th>
+                            <th scope="col" class="text-center">Sửa</th>
+                            <th scope="col" class="text-center">Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,8 +50,8 @@ include('bridge-admin/menu.php')
                                     <td><?php echo $row['id_semester']; ?> </td>
                                     <td><?php echo $row['name_semester']; ?> </td>
             
-                                    <td><a href="update_semester.php?id_semester=<?php echo $row['id_semester']; ?>"><i class="fas fa-edit"></i></a></td>
-                                    <td><a href="delete_semester.php?id_semester=<?php echo $row['id_semester']; ?>"><i class="fas fa-trash"></i></a></td>
+                                    <td class="text-center"><a href="update_semester.php?id_semester=<?php echo $row['id_semester']; ?>"><i class="fas fa-edit text-success "></i></a></td>
+                                    <td class="text-center"><a href="delete_semester.php?id_semester=<?php echo $row['id_semester']; ?>"><i class="fas fa-trash text-danger "></i></a></td>
                                 </tr>
                         <?php
                                 $i++;

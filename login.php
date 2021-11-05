@@ -79,7 +79,7 @@ if (isset($_POST["submit"])) {
             $_SESSION['id_user']=$row['id_user'];
             header("Location:index.php");
         } else {
-            echo "Xác nhận mật khẩu không đúng";
+            echo "<script> alert('Xác nhận mật khẩu không đúng')</script>";
         }
     } else {
         echo "tài khoản không tồn tại";

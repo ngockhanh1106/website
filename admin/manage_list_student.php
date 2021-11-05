@@ -29,19 +29,22 @@ include('bridge-admin/menu.php')
                 <thead>
                     <tr>
                         <th scope="col">STT</th>
+                        <th scope="col">Mã khóa học</th>
                         <th scope="col">Tên khóa học</th>
+                        <th scope="col">Mã sinh viên</th>
                         <th scope="col">Tên sinh viên</th>
+
 
                     </tr>
                 </thead>
                 <tbody>
                     <?php
 
-                    $sql = "SELECT id_register,name_course,fullname From tbl_register,tb_course,tb_users where tb_course.id_course = tbl_register.id_course and tb_users.id_user = tbl_register.id_user";
+                    $sql = "SELECT id_register,tb_course.code_course,tb_users.code_user,name_course,fullname From tbl_register,tb_course,tb_users where tb_course.id_course = tbl_register.id_course and tb_users.id_user = tbl_register.id_user";
                     if (isset($_POST['search_stu'])) {
                         // print_r($_POST);
                         $s = $_POST['search_stu'];
-                        $sql = "SELECT id_register,name_course,fullname From tbl_register,tb_course,tb_users where name_course like '%$s%' and tb_course.id_course = tbl_register.id_course and tb_users.id_user = tbl_register.id_user";
+                        $sql = "SELECT id_register,tb_course.code_course,tb_users.code_user,name_course,fullname From tbl_register,tb_course,tb_users where name_course like '%$s%' and tb_course.id_course = tbl_register.id_course and tb_users.id_user = tbl_register.id_user";
                         echo " <h4 class='text-success text-center'>Kết quả tìm kiếm của bạn trả về '$s'</h4>";
 
                       }
@@ -56,10 +59,11 @@ include('bridge-admin/menu.php')
 
                             <tr>
                                 <th scope="row"><?php echo $i; ?> </th>
-
-
+                                <td><?php echo $row['code_course']; ?> </td>
                                 <td><?php echo $row['name_course']; ?> </td>
+                                <td><?php echo $row['code_user']; ?> </td>
                                 <td><?php echo $row['fullname']; ?> </td>
+
 
                             </tr>
                     <?php

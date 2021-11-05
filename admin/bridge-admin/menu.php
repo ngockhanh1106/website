@@ -15,7 +15,7 @@ ob_start();
     <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
-    <title>Hệ thống Quản trị Đại học Trực tuyến</title>
+    <title>Quản trị viên - Hệ thống Quản trị Đại học Trực tuyến</title>
 </head>
 
 <body>
@@ -52,8 +52,12 @@ ob_start();
         <div class="container-fluid">
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-navbar" style="padding: 0;">
-                    <div class="position-sticky pt-3 sidebar-left">
+                    <div class="position-sticky sidebar-left">
                         <ul class="nav flex-column">
+                        <li >
+                            <img src="../image/md-header-bg.jpg" class="img-fluid" alt="">
+                    
+                            </li>
                             <li class="bg-hover nav-item ">
                                 <a class="nav-link active" aria-current="page" href="index.php">
                                     <i class="fas fa-desktop"></i>
@@ -117,8 +121,3 @@ ob_start();
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-content-right">
                     <div class=" mt-4 mb-4 ">
                         <div class="mt-4 p-4 bg-white rounded shadow-sm">
-
-
-
-
-                            <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->

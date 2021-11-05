@@ -18,7 +18,7 @@ include("./bridge-admin/menu.php");
                             <div class="col-md-12 margin-bottom-10">
                                 <div class="row">
                                     <div class="col-md-3 mt-1">
-                                        <h4 class="bold">Loại tài khoản</h4>
+                                        <h4 class="bold">Quản lý tài khoản</h4>
                                         <select class="form-control rounded" id="account">
                                             <option selected>Chọn loại tài khoản</option>
                                             <option value="teacher">Tài khoản giảng viên</option>

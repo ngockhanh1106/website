@@ -40,8 +40,8 @@ include('bridge-admin/menu.php')
                         <th scope="col">Ngày kết thúc</th>
                         <th scope="col">Tín chỉ</th>
                         <th scope="col">Trạng thái</th>
-                        <th scope="col">Sửa</th>
-                        <th scope="col">Xóa</th>
+                        <th scope="col" class="text-center">Sửa</th>
+                        <th scope="col" class="text-center">Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,8 +78,8 @@ include('bridge-admin/menu.php')
                                 <td><?php echo $row['enddate']; ?> </td>
                                 <td><?php echo $row['credit']; ?> </td>
                                 <td><?php echo $row['status']; ?> </td>
-                                <td><a href="update_course.php?id_course=<?php echo $row['id_course']; ?>"><i class="fas fa-edit"></i></a></td>
-                                <td><a href="delete_course.php?id_course=<?php echo $row['id_course']; ?>"><i class="fas fa-trash"></i></a></td>
+                                <td class="text-center"><a href="update_course.php?id_course=<?php echo $row['id_course']; ?>"><i class="fas fa-edit text-success"></i></a></td>
+                                <td class="text-center"><a href="delete_course.php?id_course=<?php echo $row['id_course']; ?>"><i class="fas fa-trash text-danger"></i></a></td>
                             </tr>
                     <?php
                             $i++;

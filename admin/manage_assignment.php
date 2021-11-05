@@ -31,21 +31,23 @@ include('bridge-admin/menu.php')
                 <thead>
                     <tr>
                         <th scope="col">STT</th>
+                        <th scope="col">Mã khóa học</th>
                         <th scope="col">Tên khóa học</th>
+                        <th scope="col">Mã giảng viên</th>
                         <th scope="col">Tên giảng viên</th>
-                        <th scope="col">Sửa</th>
-                        <th scope="col">Xóa</th>
+                        <th scope="col" class="text-center">Sửa</th>
+                        <th scope="col" class="text-center">Xóa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
 
-                    $sql = "SELECT id_assign,name_course,fullname From tbl_assign,tb_course,tb_users where tb_course.id_course = tbl_assign.id_course and tb_users.id_user = tbl_assign.id_user";
+                    $sql = "SELECT id_assign,tb_users.code_user,tb_course.code_course,name_course,fullname From tbl_assign,tb_course,tb_users where tb_course.id_course = tbl_assign.id_course and tb_users.id_user = tbl_assign.id_user";
 
                     if (isset($_POST['search_course'])) {
                         // print_r($_POST);
                         $s = $_POST['search_course'];
-                        $sql = "SELECT id_assign,name_course,fullname From tbl_assign,tb_course,tb_users where name_course like '%$s%' and tb_course.id_course = tbl_assign.id_course and tb_users.id_user = tbl_assign.id_user";
+                        $sql = "SELECT id_assign,tb_users.code_user,tb_course.code_course,name_course,fullname From tbl_assign,tb_course,tb_users where name_course like '%$s%' and tb_course.id_course = tbl_assign.id_course and tb_users.id_user = tbl_assign.id_user";
                         echo " <h4 class='text-success text-center'>Kết quả tìm kiếm của bạn trả về '$s'</h4>";
                         // $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status FROM tb_course,tbl_room,tbl_semester where name_course like '%$s%' and tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester";
                       }
@@ -61,12 +63,13 @@ include('bridge-admin/menu.php')
                             <tr>
                                 <th scope="row"><?php echo $i; ?> </th>
 
-
+                                <td><?php echo $row['code_course']; ?> </td>
                                 <td><?php echo $row['name_course']; ?> </td>
+                                <td><?php echo $row['code_user']; ?> </td>
                                 <td><?php echo $row['fullname']; ?> </td>
 
-                                <td><a href="update_assignment.php?id_assign=<?php echo $row['id_assign']; ?>"><i class="fas fa-edit"></i></a></td>
-                                <td><a href="delete_assignment.php?id_assign=<?php echo $row['id_assign']; ?>"><i class="fas fa-trash"></i></a></td>
+                                <td class="text-center"><a href="update_assignment.php?id_assign=<?php echo $row['id_assign']; ?>"><i class="fas fa-edit text-success"></i></a></td>
+                                <td class="text-center"><a href="delete_assignment.php?id_assign=<?php echo $row['id_assign']; ?>"><i class="fas fa-trash text-danger"></i></a></td>
                             </tr>
                     <?php
                             $i++;
