@@ -20,6 +20,13 @@ ob_start();
 
 <body>
     <div class="wrapper">
+        <?php
+        if (isset($_SESSION['welcome'])) //Checking whether the SEssion is Set of Not
+        {
+            echo $_SESSION['welcome']; //Display the SEssion Message if SEt
+            unset($_SESSION['welcome']); //Remove Session Message
+        }
+        ?>
         <div class="header">
             <div class="container">
                 <header class="row justify-content-start">
@@ -50,14 +57,14 @@ ob_start();
                             <li class="bg-hover nav-item ">
                                 <a class="nav-link active" aria-current="page" href="index.php">
                                     <i class="fas fa-desktop"></i>
-                                    <span ></span>
+                                    <span></span>
                                     Trang chủ
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="manage_course.php">
                                     <i class="fab fa-opencart"></i>
-                                    <span ></span>
+                                    <span></span>
                                     Quản lý khóa học
                                 </a>
                             </li>
@@ -77,29 +84,29 @@ ob_start();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="manage_assignment.php">
-                                <i class="far fa-hand-paper"></i>
-                                    <span ></span>
+                                    <i class="far fa-hand-paper"></i>
+                                    <span></span>
                                     Phân công giảng dạy
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="manage_semester.php">
-                                <i class="far fa-hand-paper"></i>
-                                    <span ></span>
+                                    <i class="far fa-hand-paper"></i>
+                                    <span></span>
                                     Cập nhật kỳ học
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.php">
                                     <i class="fas fa-user-alt"></i>
-                                    <span ></span>
+                                    <span></span>
                                     Thông tin cá nhân
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fas fa-user-cog"></i>
-                                    <span ></span>
+                                    <span></span>
                                     Cài đặt
                                 </a>
                             </li>

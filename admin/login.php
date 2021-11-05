@@ -86,11 +86,9 @@ if (isset($_POST['submit'])) {
         if (md5($pass) == $row['password']) {
             //biến quản lý làm việc
             $_SESSION['login-check'] = $email;
-            // $_SESSION['users'] = $row["fullname"];
             $_SESSION['users']=$row["first_name"]. " " .$row["last_name"];
-
-            // $_SESSION['id_users'] = $row['id_user'];
             $_SESSION['userid']=$row['userid'];
+            $_SESSION['welcome']= "<script> alert('Chào mừng bạn đến với trang quản trị viên')</script>";
             header("Location:index.php");
         } else {
             echo "<script> alert('Xác nhận mật khẩu không đúng')</script>";
