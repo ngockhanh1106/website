@@ -72,7 +72,6 @@ if (isset($_POST["submit"])) {
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         if (md5($pass) == $row['pass']) {
-            
             $_SESSION['login_check'] = $code_user;
             $_SESSION['role']=$row['role'];
             $_SESSION['user']=$row["fullname"];
