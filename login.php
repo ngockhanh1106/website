@@ -48,7 +48,7 @@ include_once "config/constants.php";
 
                         <br></br>
 
-                        <p class="note-login">(*) Đăng nhập bằng tài khoản/mật khẩu của <b>trang khai báo thông tin thí sinh.</b></p>
+                        <p class="note-login">(*) Đăng nhập bằng tài khoản/mật khẩu của <b>trang khai báo thông tin.</b></p>
                         <p class="note-login">(*) Điện thoại + zalo hỗ trợ: </br><b>0367.282.676 - 0362.500.881 </b></p>
 
                     </form>
@@ -72,7 +72,7 @@ if (isset($_POST["submit"])) {
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         if (md5($pass) == $row['pass']) {
-            //biến quản lý làm việc
+            
             $_SESSION['login_check'] = $code_user;
             $_SESSION['role']=$row['role'];
             $_SESSION['user']=$row["fullname"];

@@ -111,10 +111,9 @@ if (isset($_POST['btnUpdate'])) {
     $sex = $_POST['sex'];
     $birthdate = $_POST['birthdate'];
     $phone = $_POST['phone'];
-    $pass = $_POST['pass'];
     $role = 2;
 
-    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone', `pass` = '$pass', `role` = '$role' WHERE `tb_users`.`id_user` = '$id_user'";
+    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone', `role` = '$role' WHERE `tb_users`.`id_user` = '$id_user'";
 
 
     //Execute the Query

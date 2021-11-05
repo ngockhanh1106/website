@@ -26,10 +26,14 @@ include('./bridge/menu.php');
                         $id_user = $_SESSION['id_user'];
 
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
-                        $sql = "
-                        SELECT fullname, name_course, email, sex, birthdate, phone FROM tb_users, tb_course, tbl_assign, tbl_register 
-                        WHERE tb_course.id_course=tbl_assign.id_course AND tb_users.id_user=tbl_register.id_user
-                         AND tb_users.id_user=tbl_assign.id_user AND tbl_register.status = 1";
+                        // $sql = "
+                        // SELECT fullname, name_course, email, sex, birthdate, phone FROM tb_users, tb_course, tbl_assign, tbl_register 
+                        // WHERE tb_course.id_course=tbl_assign.id_course AND tb_users.id_user=tbl_register.id_user
+                        //  AND tb_users.id_user=tbl_assign.id_user AND tbl_register.status = 1";
+                        // $sql="SELECT tbl_register.id_user,tbl_assign.id_user FROM tb_course,tb_users,tbl_register,tbl_assign where tbl_register.id_course = tbl_assign.id_course and tb_users.id_user= '$id_user'";
+                        // echo $sql;
+                        $sql = "SELECT tbl_register.id_user,tbl_assign.id_user, fullname FROM tbl_register,tbl_assign,tb_users where tbl_assign.id_course=tbl_register.id_course and tb_users.role=3 and  tb_users.id_user= '$id_user'";
+                        // echo $sql;
                         $result = mysqli_query($conn, $sql);
 
                         //bước 3 xử lý kết quả trả về
@@ -42,6 +46,7 @@ include('./bridge/menu.php');
                                 <tr>
                                     <th scope="row"><?php echo $i; ?> </th>
 
+                                    <td><?php echo $row['id_user']; ?> </td>
                                     <td><?php echo $row['fullname']; ?> </td>
                                     <td><?php echo $row['name_course']; ?> </td>
                                     <td><?php echo $row['email']; ?> </td>
