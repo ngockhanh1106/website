@@ -1,21 +1,19 @@
 <?php
 include('./bridge-admin/menu.php');
 
-$id_user = $_SESSION['id_users'];
-$sql = "SELECT * FROM tb_users WHERE id_user = $id_user";
+
+$userid = $_SESSION['userid'];
+
+$sql = "SELECT * FROM users WHERE userid = $userid";
 $res = mysqli_query($conn, $sql);
 
 
 if (mysqli_num_rows($res) > 0) {
     $row = mysqli_fetch_assoc($res);
-    $code_user = $row['code_user'];
-    $fullname = $row['fullname'];
+    // $fullname = $row['fullname'];
+    $first_name = $row['first_name'];
+    $last_name = $row['last_name'];
     $email = $row['email'];
-    $sex = $row['sex'];
-    $birthdate = $row['birthdate'];
-    $phone = $row['phone'];
-    $pass = $row['pass'];
-    $role = $row['role'];
 }
 
 ?>
@@ -33,12 +31,12 @@ if (mysqli_num_rows($res) > 0) {
                             <div class="col-md-10">
                                 <div class="row form-group">
                                     <div class="col-md-6 py-2">
-                                        <label class="bold">Họ và tên</label>
-                                        <input readonly="" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"  value="<?php echo $fullname ?>">
+                                        <label class="bold">Họ</label>
+                                        <input readonly="" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"  value="<?php echo $first_name ?>">
                                     </div>
                                     <div class="col-md-6 py-2">
-                                        <label class="bold">Ngày sinh</label>
-                                        <input readonly="" type="text" class="form-control ng-pristine ng-touched ng-valid ng-not-empty"  value="<?php echo $birthdate ?>">
+                                        <label class="bold">Tên</label>
+                                        <input readonly="" type="text" class="form-control ng-pristine ng-touched ng-valid ng-not-empty"  value="<?php echo $last_name ?>">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -46,10 +44,7 @@ if (mysqli_num_rows($res) > 0) {
                                         <label class="bold">Email</label>
                                         <input readonly="" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"  value="<?php echo $email ?>">
                                     </div>
-                                    <div class="col-md-6 py-2">
-                                        <label class="bold">Số điện thoại</label>
-                                        <input readonly="" type="text" class="form-control ng-pristine ng-touched ng-valid ng-not-empty"  value="<?php echo $phone ?>">
-                                    </div>
+                    
                                 </div>
                             </div>
                         </div>

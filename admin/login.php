@@ -1,5 +1,5 @@
 <?php
-include_once "config/constants.php";
+// include_once "config/constants.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,26 +15,37 @@ include_once "config/constants.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/login.css">
 </head>
+<style>
+    body{
+        background: linear-gradient(#75859f, #2c5b8f);
+    }
+    .login-img{
+        min-height: 400px;
+    }
+</style>
 
 <body>
     <div class="main ">
         <div class="container">
             <div class="login-container">
-
-
                 <div class="login-box">
-                    <div class="login-img">
+                    <div class="login-img" >
                         <img src="../image/60year.png" class="img-fluid" alt="">
                     </div>
-                    <form action="" method="POST" class="login-form" >
+                    <form action="" method="POST" class="login-form">
                         <div class="user-box">
-                            <input type="text" name="code_user" required="">
-                            <label>Tên đăng nhập</label>
+                            <input type="text" name="email" required="">
+                            <label>Email</label>
                         </div>
                         <div class="user-box">
                             <input type="password" name="pass" required="">
                             <!-- <input type="password" name="pass" class="form-control" id="pass" > -->
                             <label>Mật khẩu</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" value="remember-me">
+                            <label class="form-check-label text-light" for="remember">Lưu mật khẩu</label>
+                            <a href="#" class="float-end text-danger">Quên mật khẩu</a>
                         </div>
                         <button type="submit" name="submit">
                             <span></span>
@@ -44,48 +55,47 @@ include_once "config/constants.php";
                             Đăng nhập
                         </button>
 
+                        <p class="text-center my-4 text-light">Bạn chưa có tài khoản? <a href="./register_account.php">Đăng ký tại đây</a></p>
 
-                        <br></br>
-
-                        <p class="note-login">(*) Đăng nhập bằng tài khoản/mật khẩu của <b>trang khai báo thông tin thí sinh.</b></p>
-                        <p class="note-login">(*) Điện thoại + zalo hỗ trợ: </br><b>0367.282.676 - 0362.500.881 </b></p>
-
-                    </form>
                 </div>
 
+                </form>
             </div>
 
         </div>
+
+    </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
 </html>
 
 
 <?php
+include_once "config/constants.php";
 
 if (isset($_POST['submit'])) {
-    $code_user = $_POST['code_user'];
+    $email = $_POST['email'];
     $pass = $_POST['pass'];
     // require('config/constants.php');
-    $sql = "SELECT * FROM tb_users WHERE code_user = '$code_user' and role = 1";
+    $sql = "SELECT * FROM users WHERE email = '$email' and status = 1";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         $row = mysqli_fetch_assoc($result);
-        if (md5($pass) == $row['pass']) {
+        if (md5($pass) == $row['password']) {
             //biến quản lý làm việc
-            $_SESSION['login-check'] = $code_user;
-            $_SESSION['users']=$row["fullname"];
-            $_SESSION['id_users'] = $row['id_user'];
+            $_SESSION['login-check'] = $email;
+            // $_SESSION['users'] = $row["fullname"];
+            $_SESSION['users']=$row["first_name"]. " " .$row["last_name"];
 
+            // $_SESSION['id_users'] = $row['id_user'];
+            $_SESSION['userid']=$row['userid'];
             header("Location:index.php");
         } else {
-            echo"<script> alert('Xác nhận mật khẩu không đúng')</script>";
+            echo "<script> alert('Xác nhận mật khẩu không đúng')</script>";
         }
     } else {
-        echo"<script> alert('Tài khoản không đúng')</script>";
+        echo "<script> alert('Tài khoản không đúng')</script>";
     }
 }
-
-
-
