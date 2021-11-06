@@ -26,34 +26,40 @@ include('./bridge/menu.php');
                         $id_user = $_SESSION['id_user'];
 
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
-                        $sql = "
-                        SELECT fullname, name_course, email, sex, birthdate, phone FROM tb_users, tb_course, tbl_assign, tbl_register 
-                        WHERE tb_course.id_course=tbl_assign.id_course AND tb_users.id_user=tbl_register.id_user
-                         AND tb_users.id_user=tbl_assign.id_user AND tbl_register.status = 1";
-                        $result = mysqli_query($conn, $sql);
+                        $sql1 = " SELECT * FROM tb_users, tbl_assign WHERE tb_users.id_user = tbl_assign.id_user AND tb_users.id_user = $id_user  ";
+                        $result1 = mysqli_query($conn, $sql1);
 
-                        //bước 3 xử lý kết quả trả về
-                        if (mysqli_num_rows($result) > 0) {
-                            $i = 1;
-                            while ($row = mysqli_fetch_assoc($result)) {
-
+                        if (mysqli_num_rows($result1) > 0) {
+                            $row1 = mysqli_fetch_assoc($result1);
+                            $id_course1 = $row1['id_course'];
+                            $sql2 = "SELECT *  
+                             FROM tb_course,tbl_register,tb_users, tbl_assign
+                             where tb_users.id_user = tbl_register.id_user and tbl_register.id_course = tb_course.id_course 
+                             and tb_course.id_course = tbl_assign.id_course AND tb_course.id_course = $id_course1";
+                            $result2 = mysqli_query($conn, $sql2);
+                            if (mysqli_num_rows($result2) > 0) {
+                                $i = 1;
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
                         ?>
 
-                                <tr>
-                                    <th scope="row"><?php echo $i; ?> </th>
+                                    <tr>
+                                        <th scope="row"><?php echo $i; ?> </th>
 
-                                    <td><?php echo $row['fullname']; ?> </td>
-                                    <td><?php echo $row['name_course']; ?> </td>
-                                    <td><?php echo $row['email']; ?> </td>
-                                    <td><?php echo $row['sex']; ?> </td>
-                                    <td><?php echo $row['birthdate']; ?> </td>
-                                    <td><?php echo $row['phone']; ?> </td>
+                                        <td><?php echo $row2['fullname']; ?> </td>
+                                        <td><?php echo $row2['name_course']; ?> </td>
+                                        <td><?php echo $row2['email']; ?> </td>
+                                        <td><?php echo $row2['sex']; ?> </td>
+                                        <td><?php echo $row2['birthdate']; ?> </td>
+                                        <td><?php echo $row2['phone']; ?> </td>
 
-                                </tr>
+                                    </tr>
                         <?php
-                                $i++;
+                                    $i++;
+                                }
                             }
                         }
+
+
                         ?>
                     </tbody>
                 </table>
