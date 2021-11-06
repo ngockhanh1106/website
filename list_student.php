@@ -24,36 +24,56 @@ include('./bridge/menu.php');
                         //lấy dữ liệu từ CSDL và để ra bảng (phần lặp lại)
                         //bước 1:kết nối tời csdl(mysql)
                         $id_user = $_SESSION['id_user'];
-
+// var_dump($id_user);die;
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
                         $sql = "
-                        SELECT fullname, name_course, email, sex, birthdate, phone FROM tb_users, tb_course, tbl_assign, tbl_register 
-                        WHERE tb_course.id_course=tbl_assign.id_course AND tb_users.id_user=tbl_register.id_user
-                         AND tb_users.id_user=tbl_assign.id_user AND tbl_register.status = 1";
+                        SELECT * FROM `tb_users`
+JOIN tbl_assign 
+on tb_users.id_user = tbl_assign.id_user
+WHERE tb_users.role = 2 AND tb_users.id_user = 27;";
                         $result = mysqli_query($conn, $sql);
 
                         //bước 3 xử lý kết quả trả về
-                        if (mysqli_num_rows($result) > 0) {
+                        $dataTecheer = mysqli_fetch_assoc($result);
+                        if(!empty($dataTecheer)){
+                           $idCourse = $dataTecheer['id_course'];
+                           $sql1 = "
+                           SELECT * FROM tb_course
+                           JOIN tbl_register 
+                           on tb_course.id_course = tbl_register.id_course
+                           JOIN tb_users 
+                           ON tbl_register.id_user = tb_users.id_user
+                           WHERE tb_course.id_course = ".$idCourse.";";
+                        //    echo $sql1;
+                            $resultStudent = mysqli_query($conn, $sql1);
+                            // var_dump
+                        //    var_dump(mysqli_fetch_assoc($resultStudent));
+                            $dataStudent = mysqli_fetch_all($resultStudent);
+                           
                             $i = 1;
-                            while ($row = mysqli_fetch_assoc($result)) {
+                            foreach ($dataStudent as $row) {
+                                // var_dump($row);die;
+                                
 
                         ?>
 
                                 <tr>
                                     <th scope="row"><?php echo $i; ?> </th>
 
-                                    <td><?php echo $row['fullname']; ?> </td>
-                                    <td><?php echo $row['name_course']; ?> </td>
-                                    <td><?php echo $row['email']; ?> </td>
-                                    <td><?php echo $row['sex']; ?> </td>
-                                    <td><?php echo $row['birthdate']; ?> </td>
-                                    <td><?php echo $row['phone']; ?> </td>
+                                    <td><?php echo $row['17']; ?> </td>
+                                    <td><?php echo $row['2']; ?> </td>
+                                    <td><?php echo $row['18']; ?> </td>
+                                    <td><?php echo $row['19']; ?> </td>
+                                    <td><?php echo $row['20']; ?> </td>
+                                    <td><?php echo $row['21']; ?> </td>
 
                                 </tr>
                         <?php
                                 $i++;
                             }
                         }
+                        
+                        
                         ?>
                     </tbody>
                 </table>

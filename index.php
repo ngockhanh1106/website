@@ -10,14 +10,6 @@ include('./bridge/menu.php')
     <?php
     if ($_SESSION['role'] == 3) {
     ?>
-        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
-            <div class="dash-let">
-                <a href="course.php">
-                    <i class="fa fa-university"></i>
-                    <span>Thông tin khóa học</span>
-                </a>
-            </div>
-        </div>
 
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
