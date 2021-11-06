@@ -30,8 +30,8 @@ ob_start();
                             <img src="image/en.jpg" alt="">
                             <!--<a href="login.php">sign in</a>-->
                         </div>
-                        <div class="account dropdown">
-                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                        <div class="account ">
+                            <a href="#" >
                                 <img src="./image/no-profile-photo-small.png" alt="" class="img-circle img-fluid ">
                                 <span><?= $_SESSION['user'] ?></span>
                                 <!-- <i class="fas fa-caret-down"></i> -->
