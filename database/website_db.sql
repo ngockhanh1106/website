@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2021 at 07:01 AM
+-- Generation Time: Nov 06, 2021 at 07:11 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -38,13 +38,15 @@ CREATE TABLE `tbl_assign` (
 --
 
 INSERT INTO `tbl_assign` (`id_assign`, `id_course`, `id_user`) VALUES
-(2, 10, 27),
+(2, 10, 53),
 (4, 11, 39),
 (5, 13, 37),
 (6, 9, 38),
 (8, 14, 43),
 (9, 18, 52),
-(10, 17, 51);
+(10, 17, 51),
+(11, 12, 50),
+(12, 15, 52);
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,8 @@ INSERT INTO `tbl_register` (`id_register`, `id_course`, `id_user`) VALUES
 (33, 12, 40),
 (34, 13, 40),
 (35, 9, 41),
-(36, 13, 41);
+(36, 13, 41),
+(37, 14, 55);
 
 -- --------------------------------------------------------
 
@@ -180,32 +183,35 @@ CREATE TABLE `tb_users` (
   `sex` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthdate` date NOT NULL,
   `phone` int(11) NOT NULL,
-  `pass` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+  `pass` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_name` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_users`
 --
 
-INSERT INTO `tb_users` (`id_user`, `code_user`, `role`, `fullname`, `email`, `sex`, `birthdate`, `phone`, `pass`) VALUES
-(27, '19610307', 2, 'Nguyễn Giang', '19610307@gmail.com', 'Nữ', '2021-10-15', 976543256, '202cb962ac59075b964b07152d234b70'),
-(36, '19610311', 3, 'Hoàng Hà Giang', 'giang@gmail.com', 'Nam', '2001-07-08', 976543876, '202cb962ac59075b964b07152d234b70'),
-(37, '18610302', 2, 'Nguyễn Ngọc Bảo', 'bao@gmail.com', 'Nam', '1986-07-09', 97443256, '202cb962ac59075b964b07152d234b70'),
-(38, 'teacher12', 2, 'Ngọc Lục Bảo', 'bao@gmail.com', 'Nữ', '1989-11-03', 988843876, '202cb962ac59075b964b07152d234b70'),
-(39, 'teacher1234', 2, 'Nguyễn Hoàng Huy', 'huy@gmail.com', 'Nam', '1986-02-14', 989893876, '202cb962ac59075b964b07152d234b70'),
-(40, '19991108', 3, 'Trần Quốc Hưng', 'hung@gmail.com', 'Nam', '1999-08-11', 989893999, '202cb962ac59075b964b07152d234b70'),
-(41, '19930604', 3, 'Nguyễn Việt Hùng', 'hung11@vaka.com', 'Nam', '1998-11-13', 987843876, '202cb962ac59075b964b07152d234b70'),
-(43, 'teacher567', 2, 'Đinh Khánh Hà', 'ha@gmail.com', 'Nam', '1985-02-11', 989893876, '202cb962ac59075b964b07152d234b70'),
-(44, '10257264', 3, 'Phạm Thị Hương', 'pth@gmail.com', 'Nữ', '2000-12-05', 945278531, '202cb962ac59075b964b07152d234b70'),
-(45, '16475826', 3, 'Trần Mạnh Trung', 'tmt@yahoo.com', 'Nam', '2002-04-06', 345726428, '202cb962ac59075b964b07152d234b70'),
-(46, '17584547', 3, 'Nguyễn Nam Hải', 'nnh@gmail.com', 'Nam', '2001-06-05', 986524837, '202cb962ac59075b964b07152d234b70'),
-(47, '18547268', 3, 'Nguyễn Thúy Liễu', 'ntl@gmail.com', 'Nữ', '1999-02-07', 962485375, '202cb962ac59075b964b07152d234b70'),
-(48, '19642578', 3, 'Nguyễn Tường San', 'nts@yahoo.com', 'Nữ', '2000-12-15', 995634851, '202cb962ac59075b964b07152d234b70'),
-(49, '17524685', 3, 'Phạm Phương Nam', 'pph@gmail.com', 'Nam', '2001-06-18', 956347258, '202cb962ac59075b964b07152d234b70'),
-(50, 'teacher285', 2, 'Nguyễn Thị Anh', 'nta@gmai.com', 'Nữ', '1975-12-06', 95427652, '202cb962ac59075b964b07152d234b70'),
-(51, 'teacher965', 2, 'Phạm Tiến Cường', 'ptc@gmail.com', 'Nam', '1980-05-09', 965247825, '202cb962ac59075b964b07152d234b70'),
-(52, 'teacher329', 2, 'Nguyễn Hồng Hạnh', 'nhh@gmail.com', 'Nữ', '1977-01-05', 953478515, '202cb962ac59075b964b07152d234b70'),
-(53, 'teacher227', 2, 'Phạm Công Thành', 'pct@gmail.com', 'Nam', '1994-02-21', 967854759, '202cb962ac59075b964b07152d234b70');
+INSERT INTO `tb_users` (`id_user`, `code_user`, `role`, `fullname`, `email`, `sex`, `birthdate`, `phone`, `pass`, `image_name`) VALUES
+(27, '19610307', 2, 'Nguyễn Giang', '19610307@gmail.com', 'Nữ', '1988-10-15', 976543256, '202cb962ac59075b964b07152d234b70', 'Staff_list_676.jpg'),
+(36, '19610311', 3, 'Hoàng Hà Giang', 'giang@gmail.com', 'Nam', '2001-07-08', 976543876, '202cb962ac59075b964b07152d234b70', 'Staff_list_503.jpg'),
+(37, '18610302', 2, 'Nguyễn Ngọc Bảo', 'bao@gmail.com', 'Nam', '1986-07-09', 97443256, '202cb962ac59075b964b07152d234b70', 'Staff_list_870.jpg'),
+(38, 'teacher12', 2, 'Ngọc Lục Bảo', 'bao@gmail.com', 'Nữ', '1989-11-03', 988843876, '202cb962ac59075b964b07152d234b70', ''),
+(39, 'teacher1234', 2, 'Nguyễn Hoàng Huy', 'huy@gmail.com', 'Nam', '1986-02-14', 989893876, '202cb962ac59075b964b07152d234b70', ''),
+(40, '19991108', 3, 'Trần Quốc Hưng', 'hung@gmail.com', 'Nam', '1999-08-11', 989893999, '202cb962ac59075b964b07152d234b70', 'Staff_list_79.jpg'),
+(41, '19930604', 3, 'Nguyễn Việt Hùng', 'hung11@vaka.com', 'Nam', '1998-11-13', 987843876, '202cb962ac59075b964b07152d234b70', 'Staff_list_358.jpg'),
+(43, 'teacher567', 2, 'Đinh Khánh Hà', 'ha@gmail.com', 'Nam', '1985-02-11', 989893876, '202cb962ac59075b964b07152d234b70', ''),
+(44, '10257264', 3, 'Phạm Thị Hương', 'pth@gmail.com', 'Nữ', '2000-12-05', 945278531, '202cb962ac59075b964b07152d234b70', 'Staff_list_814.jpeg'),
+(45, '16475826', 3, 'Trần Mạnh Trung', 'tmt@yahoo.com', 'Nam', '2002-04-06', 345726428, '202cb962ac59075b964b07152d234b70', ''),
+(46, '17584547', 3, 'Nguyễn Nam Hải', 'nnh@gmail.com', 'Nam', '2001-06-05', 986524837, '202cb962ac59075b964b07152d234b70', ''),
+(47, '18547268', 3, 'Nguyễn Thúy Liễu', 'ntl@gmail.com', 'Nữ', '1999-02-07', 962485375, '202cb962ac59075b964b07152d234b70', 'Staff_list_544.jpg'),
+(48, '19642578', 3, 'Nguyễn Tường San', 'nts@yahoo.com', 'Nam', '2000-12-15', 995634851, '202cb962ac59075b964b07152d234b70', ''),
+(49, '17524685', 3, 'Phạm Phương Nam', 'pph@gmail.com', 'Nam', '2001-06-18', 956347258, '202cb962ac59075b964b07152d234b70', ''),
+(50, 'teacher285', 2, 'Nguyễn Thị Anh', 'nta@gmai.com', 'Nữ', '1975-12-06', 95427652, '202cb962ac59075b964b07152d234b70', ''),
+(51, 'teacher965', 2, 'Phạm Tiến Cường', 'ptc@gmail.com', 'Nam', '1980-05-09', 965247825, '202cb962ac59075b964b07152d234b70', ''),
+(52, 'teacher329', 2, 'Nguyễn Hồng Hạnh', 'nhh@gmail.com', 'Nữ', '1977-01-05', 953478515, '202cb962ac59075b964b07152d234b70', ''),
+(53, 'teacher227', 2, 'Phạm Công Thành', 'pct@gmail.com', 'Nam', '1994-02-21', 967854759, '202cb962ac59075b964b07152d234b70', ''),
+(54, '19052012', 3, 'An Linh Chi', 'chi@gmail.com', 'Nữ', '2000-11-02', 995906079, '202cb962ac59075b964b07152d234b70', ''),
+(55, '1951060786', 3, 'Nguyễn Ngọc Khánh', 'meoc419@gmail.com', 'Nữ', '2001-06-11', 987843876, '202cb962ac59075b964b07152d234b70', 'Staff_list_409.jpg');
 
 -- --------------------------------------------------------
 
@@ -294,13 +300,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tbl_assign`
 --
 ALTER TABLE `tbl_assign`
-  MODIFY `id_assign` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_assign` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_register`
 --
 ALTER TABLE `tbl_register`
-  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbl_room`
@@ -324,7 +330,7 @@ ALTER TABLE `tb_course`
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `users`
