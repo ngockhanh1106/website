@@ -89,20 +89,7 @@ include('./bridge-admin/menu.php')
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="role" class="col-sm-2 col-form-label">Quyền</label>
-                <div class="col-sm-10">
-                <div class="form-group mt-2" style="font-size: larger;">
-                    <select name="role" id="role" class="custom-select" value="<?php echo $role; ?>">
-                        <option value="3" <?php echo isset($meta['role']) && $meta['role'] == 3 ? 'selected' : '' ?>>Sinh viên</option>
-                        <option value="2" <?php echo isset($meta['role']) && $meta['role'] == 2 ? 'selected' : '' ?>>Giảng viên</option>
-                        <option value="1" <?php echo isset($meta['role']) && $meta['role'] == 1 ? 'selected' : '' ?>>Quản trị viên</option>
-                    </select>
-                </div>
-
-                    <!-- <input type="text" class="form-control" id="role" name="role" value="?php echo $role; ?>"> -->
-                </div>
-            </div>
+            
             <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
             <input type="submit" class="btn btn-primary" name="btnUpdate" value="Sửa">
         </form>
@@ -124,10 +111,9 @@ if (isset($_POST['btnUpdate'])) {
     $sex = $_POST['sex'];
     $birthdate = $_POST['birthdate'];
     $phone = $_POST['phone'];
-    $pass = $_POST['pass'];
     $role = 3;
 
-    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone', `pass` = '$pass', `role` = '$role' WHERE `tb_users`.`id_user` = '$id_user'";
+    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone',  `role` = '$role' WHERE `tb_users`.`id_user` = '$id_user'";
 
 
     //Execute the Query
@@ -137,12 +123,12 @@ if (isset($_POST['btnUpdate'])) {
     if ($res == true) {
         //Query Executed and Admin Updated
         $_SESSION['noti'] = "sửa thành công";
-        header("location:" . SITEURL . 'manage_user.php');
+        header("location:" . SITEURL . 'users.php');
        
     } else {
         //Failed to Update Admin
         $_SESSION['noti'] = "lỗi khi sửa";
-        header("location:" . SITEURL . 'manage_user.php');
+        header("location:" . SITEURL . 'users.php');
    
     }
 }

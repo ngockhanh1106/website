@@ -56,7 +56,7 @@ include('./bridge/menu.php')
                             $sql = "SELECT tb_course.id_course,code_course,name_course,days,lesson,startdate,enddate,credit,name_room,name_semester  
                             FROM tb_course,tbl_register,tb_users,tbl_room,tbl_semester 
                             where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester 
-                            AND tb_course.id_course = tbl_register.id_course AND tb_users.id_user = tbl_register.id_user and and tb_users.id_user= '$id_user'
+                            AND tb_course.id_course = tbl_register.id_course AND tb_users.id_user = tbl_register.id_user and tb_users.id_user= '$id_user'
                             and name_course like '%$s%'";
     
                             echo " <h4 class='text-success text-center'>Kết quả tìm kiếm của bạn trả về '$s'</h4>";

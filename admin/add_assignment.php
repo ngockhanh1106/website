@@ -8,41 +8,40 @@ include('./bridge-admin/menu.php')
         <br /><br />
     </div>
     <form action="#" method="POST" class="mb-4" enctype="multipart/form-data">
-        
-        <div class="row mb-3">
-            <label for="course" class="col-sm-2 col-form-label">Tên khóa học</label>
+        <div class='row mb-3'>
+            <label for="course" class="col-sm-2 col-form-label">Khóa học</label>
             <div class="col-sm-10">
-                <select class="form-select" name="course" id="course">
+
+            <select class="form-select" name="course" id="course">
                     <?php
                     $sql1 = "SELECT*FROM tb_course";
                     $res1 = mysqli_query($conn, $sql1);
                     if (mysqli_num_rows($res1) > 0) {
                         while ($row = mysqli_fetch_assoc($res1)) {
-                            echo '<option class="form-control" value ="' . $row['id_course'] . '">' . $row['name_course'] . '</option>';
+                            echo '<option class="form-control" value ="' . $row['id_course'] . '">' . $row['code_course'] . '-'.$row['name_course']. '</option>';
                         }
                     }
                     ?>
                 </select>
             </div>
         </div>
-        <div class="row mb-3">
-            <label for="startdate" class="col-sm-2 col-form-label">Tên giảng viên</label>
+        <div class='row mb-3'>
+            <label for="course" class="col-sm-2 col-form-label">Giảng viên</label>
             <div class="col-sm-10">
+
             <select class="form-select" name="user" id="user">
                     <?php
                     $sql1 = "SELECT*FROM tb_users where role = 2";
                     $res1 = mysqli_query($conn, $sql1);
                     if (mysqli_num_rows($res1) > 0) {
                         while ($row = mysqli_fetch_assoc($res1)) {
-                            echo '<option class="form-control" value ="' . $row['id_user'] . '">' . $row['fullname'] . '</option>';
+                            echo '<option class="form-control" value ="' . $row['id_user'] . '">' . $row['code_user'] .'-'.$row['fullname']. '</option>';
                         }
                     }
                     ?>
                 </select>
             </div>
         </div>
-
-
         <button type="submit" class="btn btn-primary" name="btnAdd">Them</button>
     </form>
 
@@ -52,7 +51,8 @@ include('./bridge-admin/menu.php')
     //kiểm tra xem đã ấn vào nút thêm chưa
     if (isset($_POST['btnAdd'])) {
 
-    
+        $code_course = $_POST['code_course'];
+        $code_user = $_POST['code_user'];
         $id_course = $_POST['course'];
         $id_user = $_POST['user'];
 

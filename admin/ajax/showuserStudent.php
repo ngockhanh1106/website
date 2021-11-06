@@ -4,6 +4,7 @@
             <tr>
                 <th>STT</th>
                 <th>Mã Giáo viên</th>
+                <!-- <th>Mật khẩu</th> -->
                 <th>Tên Giáo viên</th>
                 <th>Email</th>
                 <th>Giới tính</th>
