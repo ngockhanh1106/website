@@ -41,7 +41,9 @@ include('./bridge/menu.php')
                         //bước 1:kết nối tời csdl(mysql)
 
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
-                        $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status FROM tb_course,tbl_room,tbl_semester where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester and tb_course.status=1 ";
+                        $sql = "SELECT id_course,code_course,name_course,days,lesson,name_room,name_semester,startdate,enddate,credit,status 
+                        FROM tb_course,tbl_room,tbl_semester 
+                        where tb_course.id_room = tbl_room.id_room AND tb_course.id_semester = tbl_semester.id_semester and tb_course.status=1";
                         $result = mysqli_query($conn, $sql);
                         //bước 3 xử lý kết quả trả về
                         if (mysqli_num_rows($result) > 0) {
@@ -64,23 +66,23 @@ include('./bridge/menu.php')
                                     <td><?php echo $row['credit']; ?> </td>
                                     <td>
                                         <?php
-                                            $idc = $row['id_course'];
-                                            $idu = $_SESSION['id_user'];
-                                            $sql2 = "select * from tbl_register where id_course = $idc and id_user = $idu";
-                                            $res=mysqli_query($conn, $sql2);
-                                            if(mysqli_num_rows($res)>0){
-                                                ?>
-                                                <a href="#"  >  <i class="fas fa-check-circle"></i></a>
+                                        $idc = $row['id_course'];
+                                        $idu = $_SESSION['id_user'];
+                                        $sql2 = "select * from tbl_register where id_course = $idc and id_user = $idu";
+                                        $res = mysqli_query($conn, $sql2);
+                                        if (mysqli_num_rows($res) > 0) {
+                                        ?>
+                                            <a href="#"> <i class="fas fa-check-circle"></i></a>
 
-                                                <?php 
+                                        <?php
 
-                                                
-                                            }else{
-                                                ?>
-                                                <a href="process_register.php?id_course=<?php echo $row['id_course'];?>&id_user=<?php echo $_SESSION['id_user'];?>"  >  <i class="fas fa-book-medical"></i></a>
 
-                                                <?php
-                                            }
+                                        } else {
+                                        ?>
+                                            <a href="process_register.php?id_course=<?php echo $row['id_course']; ?>&id_user=<?php echo $_SESSION['id_user']; ?>"> <i class="fas fa-book-medical"></i></a>
+
+                                        <?php
+                                        }
 
 
                                         ?>

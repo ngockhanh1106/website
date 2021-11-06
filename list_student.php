@@ -24,7 +24,7 @@ include('./bridge/menu.php');
                         //lấy dữ liệu từ CSDL và để ra bảng (phần lặp lại)
                         //bước 1:kết nối tời csdl(mysql)
                         $id_user = $_SESSION['id_user'];
-
+// var_dump($id_user);die;
                         //bước 2 khai báo câu lệnh thực thi và thực hiện truy vấn
                         $sql1 = " SELECT * FROM tb_users, tbl_assign WHERE tb_users.id_user = tbl_assign.id_user AND tb_users.id_user = $id_user  ";
                         $result1 = mysqli_query($conn, $sql1);
