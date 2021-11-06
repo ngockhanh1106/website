@@ -56,6 +56,12 @@ include('./bridge-admin/menu.php')
                 <input type="password" class="form-control" id="pass" name="pass">
             </div>
         </div>
+        <div class="row mb-3">
+                <label for="newimage" class="col-sm-2 col-form-label">Tải ảnh lên:</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control" name="image">
+                </div>
+            </div>
 
         <button type="submit" class="btn btn-primary" name="btnAdd">Them</button>
     </form>
@@ -74,9 +80,33 @@ include('./bridge-admin/menu.php')
         $phone = $_POST['phone'];
         $pass = md5($_POST['pass']);
         $role = 3;
+        if (isset($_FILES['image']['name'])) {
 
-        $sql = "INSERT INTO tb_users(code_user,fullname,email,sex,birthdate,phone,pass,role)
-         VALUES( '$code_user','$fullname','$email','$sex','$birthdate','$phone','$pass','$role')";
+            $image_name = $_FILES['image']['name'];
+
+            if ($image_name != "") {
+                $ext = end(explode('.', $image_name));
+
+                //dat lai ten file
+                $image_name = "Staff_list_" . rand(000, 999) . '.' . $ext; // e.g. Staff_list_116.jpg
+                $source_path = $_FILES['image']['tmp_name'];
+                $destination_path = "../image/staff/" . $image_name;
+
+                $upload = move_uploaded_file($source_path, $destination_path);
+
+
+                if ($upload == false) {
+                    echo ' tai len ko thanh cong';
+                    die();
+                }
+            }
+        } else {
+            $image_name = "";
+        }
+
+
+        $sql = "INSERT INTO tb_users(code_user,fullname,email,sex,birthdate,phone,pass,role,image_name)
+         VALUES( '$code_user','$fullname','$email','$sex','$birthdate','$phone','$pass','$role','$image_name')";
         //echo $sql;
 
         if (mysqli_query($conn, $sql) == TRUE) {

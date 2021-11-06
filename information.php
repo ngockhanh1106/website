@@ -15,6 +15,7 @@ if (mysqli_num_rows($res) > 0) {
     $phone = $row['phone'];
     $pass = $row['pass'];
     $role = $row['role'];
+    $image_name=$row['image_name'];
 }
 
 
@@ -28,7 +29,7 @@ if (mysqli_num_rows($res) > 0) {
                         <div class="row form-group p-3">
                             
                             <div class="col-xs-6 col-md-2">
-                                <img class="" height="160px" width="130" alt="" src="">
+                                <img src="./image/staff/<?php echo $row['image_name'] ?>" alt="" width="100%" height="160px" width="130" alt="">
                             </div>
                             <div class="col-md-10">
                                 <div class="row form-group">

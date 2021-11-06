@@ -12,15 +12,6 @@ include('./bridge/menu.php')
     ?>
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
-                <a href="course.php">
-                    <i class="fa fa-university"></i>
-                    <span>Thông tin khóa học</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
-            <div class="dash-let">
                 <a href="register_course.php">
                     <i class="fa fa-university"></i>
                     <span>Đăng ký học</span>
@@ -37,14 +28,6 @@ include('./bridge/menu.php')
             </div>
         </div>
 
-        <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
-            <div class="dash-let">
-                <a href="course.php">
-                    <i class="fa fa-university"></i>
-                    <span>Thông tin học sinh</span>
-                </a>
-            </div>
-        </div>
     <?php
     }
     ?>
@@ -68,19 +51,19 @@ include('./bridge/menu.php')
             </div>
         </div>
 
+        <?php
+    }
+?>
         <div class="col-md-3 col-sm-4 col-xs-12 margin-top-10">
             <div class="dash-let">
-                <a href="contact.php">
+                <a href="./information.php">
                     <i class="fa fa-university"></i>
-                    <span>Liên hệ</span>
+                    <span>Thông tin cá nhân</span>
                 </a>
             </div>
         </div>
-
 </div>
-<?php
-    }
-?>
+
 
 <?php
 include('./bridge/footer.php')

@@ -39,6 +39,8 @@ include('./bridge-admin/menu.php')
                 $birthdate = $row['birthdate'];
                 $phone = $row['phone'];
                 $role = $row['role'];
+                $current_image = $row['image_name'];
+
 
             } else {
                 //Redirect to Manage Admin PAge
@@ -88,8 +90,33 @@ include('./bridge-admin/menu.php')
                     <input type="tel" class="form-control" id="sodidong" name="phone" value="<?php echo $phone; ?>">
                 </div>
             </div>
+            <div class="row mb-3">
+                <label for="image" class="col-sm-2 col-form-label">Hình ảnh hiện tại:</label>
+                <div class="col-sm-10">
+                    <?php
+                    if ($current_image != "") {
+                        //display image
+                        //echo $current_image;
+                    ?>
+                        <img src="../image/staff/<?php echo $current_image ?>" alt="" width="15%">
 
-            
+
+                    <?php
+                    } else {
+                        //display message
+                        echo "Chưa có ảnh";
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="newimage" class="col-sm-2 col-form-label">Tải ảnh mới lên:</label>
+                <div class="col-sm-10">
+                    <input id="uploadImage" type="file" class="form-control" name="image">
+                </div>
+            </div>
+
+            <input type="hidden" name="current_image">
             <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
             <input type="submit" class="btn btn-primary" name="btnUpdate" value="Sửa">
         </form>
@@ -112,8 +139,45 @@ if (isset($_POST['btnUpdate'])) {
     $birthdate = $_POST['birthdate'];
     $phone = $_POST['phone'];
     $role = 3;
+    $current_image = $_POST['current_image'];
 
-    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone',  `role` = '$role' WHERE `tb_users`.`id_user` = '$id_user'";
+    if (isset($_FILES['image']['name'])) {
+        $image_name = $_FILES['image']['name'];
+        // echo $image_name;
+
+        if ($image_name != "") {
+            $ext = end(explode('.', $image_name));
+
+            $image_name = "Staff_list_" . rand(000, 999) . '.' . $ext; // e.g. Staff_list_116.jpg
+            $source_path = $_FILES['image']['tmp_name'];
+            $destination_path = "../image/staff/" . $image_name;
+
+            $upload = move_uploaded_file($source_path, $destination_path);
+            //echo $upload;
+
+            if ($upload == false) {
+                echo ' tai len ko thanh cong';
+                die();
+            }
+
+            if ($current_image != "") {
+                $remove_path = "../image/staff/" . $current_image;
+                $remove = unlink($remove_path);
+                if ($remove == false) {
+                    echo 'loi khi bo anh';
+                    die();
+                }
+            }
+        } else {
+            $image_name = $current_image;
+        }
+    } else {
+        $image_name = $current_image;
+    }
+
+
+
+    $sql = "UPDATE `tb_users` SET `code_user` = '$code_user', `fullname` ='$fullname', `email` = '$email' ,`sex` = '$sex', `birthdate` = '$birthdate', `phone` = '$phone',  `role` = '$role',image_name = '$image_name' WHERE `tb_users`.`id_user` = '$id_user'";
 
 
     //Execute the Query
@@ -129,6 +193,7 @@ if (isset($_POST['btnUpdate'])) {
         //Failed to Update Admin
         $_SESSION['noti'] = "lỗi khi sửa";
         header("location:" . SITEURL . 'users.php');
+        
    
     }
 }
